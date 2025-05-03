@@ -66,8 +66,12 @@ const SetupPin = () => {
       const reader = new FileReader();
       reader.onload = () => {
         setUserData({
-          ...userData,
+          ...userData!,
           profileImage: reader.result as string
+        });
+        toast({
+          title: "Profile updated",
+          description: "Your profile image has been updated successfully",
         });
       };
       reader.readAsDataURL(file);

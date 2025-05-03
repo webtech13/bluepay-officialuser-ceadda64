@@ -43,7 +43,8 @@ const Register = () => {
 
       <div className="flex-1 flex flex-col justify-center p-6">
         <div className="max-w-md w-full mx-auto">
-          <h1 className="text-4xl font-bold mb-4 text-white">Welcome!</h1>
+          <h1 className="text-3xl font-bold mb-2 text-white text-center">BLUEPAY2025</h1>
+          <h2 className="text-2xl font-bold mb-4 text-white">Welcome!</h2>
           <p className="text-gray-100 mb-6">
             Get your account ready and instantly start buying, selling airtime and data online and start paying all your bills in cheaper price.
           </p>

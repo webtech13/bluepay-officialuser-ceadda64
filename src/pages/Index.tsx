@@ -11,13 +11,18 @@ const Index = () => {
       <div className="flex-1 flex flex-col">
         <header className="p-4">
           <div className="flex items-center">
-            <div className="text-2xl font-bold">Bluepay</div>
+            <div className="text-2xl font-bold">BLUEPAY2025</div>
           </div>
         </header>
 
         <main className="flex-1 flex flex-col p-6 justify-center">
           <div className="mt-16">
-            <h1 className="text-5xl font-bold mb-4">Get Your Account Ready And Instantly.</h1>
+            <img 
+              src="/lovable-uploads/55c3f237-e0a0-487d-8665-b3f3c186b081.png" 
+              alt="BLUEPAY2025" 
+              className="mx-auto mb-10 max-w-xs"
+            />
+            <h1 className="text-4xl font-bold mb-4">Get Your Account Ready And Instantly.</h1>
             <p className="text-lg mb-10">
               Get your account ready and instantly start buying, selling airtime and data
               online and start paying all your bills in cheaper price.

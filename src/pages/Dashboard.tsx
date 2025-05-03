@@ -4,9 +4,11 @@ import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { userData } = useUserStore();
+  const navigate = useNavigate();
   const [transactions] = React.useState([
     { id: 1, type: "Airtime", amount: "₦2,000", date: "Today, 10:42 AM", status: "Completed" },
     { id: 2, type: "Data Bundle", amount: "₦5,000", date: "Yesterday, 2:15 PM", status: "Completed" },
@@ -19,7 +21,7 @@ const Dashboard = () => {
         <button className="text-xl">
           <Menu size={24} />
         </button>
-        <h1 className="text-2xl font-semibold">Bluepay</h1>
+        <h1 className="text-2xl font-semibold">BLUEPAY2025</h1>
         <div className="w-8 h-8">
           <Bell size={24} />
         </div>
@@ -31,10 +33,11 @@ const Dashboard = () => {
             <Avatar className="w-12 h-12 border-2 border-white">
               {userData?.profileImage ? (
                 <AvatarImage src={userData.profileImage} alt="Profile" className="object-cover" />
-              ) : null}
-              <AvatarFallback className="bg-yellow-500">
-                <User className="text-white" />
-              </AvatarFallback>
+              ) : (
+                <AvatarFallback className="bg-yellow-500">
+                  <User className="text-white" />
+                </AvatarFallback>
+              )}
             </Avatar>
             <h2 className="text-xl font-semibold">Hi, {userData?.fullName || "User"}</h2>
           </div>
@@ -114,7 +117,8 @@ const Dashboard = () => {
               <p className="text-xs">Support</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
+              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center cursor-pointer"
+                   onClick={() => navigate("/profile")}>
                 <User className="h-6 w-6 text-bluepay-blue" />
               </div>
               <p className="text-xs">Profile</p>
@@ -167,7 +171,7 @@ const Dashboard = () => {
           <BarChart2 size={20} className="text-white/60" />
           <span className="text-xs text-white/60">Stats</span>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={() => navigate("/profile")}>
           <User size={20} className="text-white/60" />
           <span className="text-xs text-white/60">Profile</span>
         </div>
