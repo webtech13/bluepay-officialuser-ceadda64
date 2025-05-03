@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHalf, CircleHalfVertical } from "lucide-react";
+import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
@@ -117,7 +117,7 @@ const Profile = () => {
                   <div className="flex items-center">
                     {themeMode === 'light' && <Sun className="h-5 w-5 mr-2 text-gray-500" />}
                     {themeMode === 'dark' && <Moon className="h-5 w-5 mr-2 text-gray-500" />}
-                    {themeMode === 'system' && <CircleHalf className="h-5 w-5 mr-2 text-gray-500" />}
+                    {themeMode === 'system' && <CircleHelp className="h-5 w-5 mr-2 text-gray-500" />}
                     {themeMode === 'white' && <Circle className="h-5 w-5 mr-2 text-gray-500" />}
                     <p className="text-lg">{themeMode === 'light' ? 'Light Mode' : 
                                            themeMode === 'dark' ? 'Dark Mode' : 
@@ -173,7 +173,7 @@ const Profile = () => {
                           onClick={() => handleThemeChange('system')}
                         >
                           <div className="flex items-center">
-                            <CircleHalf className="h-5 w-5 mr-3 text-blue-600" />
+                            <CircleHelp className="h-5 w-5 mr-3 text-blue-600" />
                             <div>
                               <p className="font-medium">System Mode</p>
                               <p className="text-sm text-gray-500">Match your system settings</p>
