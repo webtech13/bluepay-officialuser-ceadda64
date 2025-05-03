@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useUserStore } from "../stores/userStore";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { setUserData } = useUserStore();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -20,6 +22,11 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Save user data to store
+    setUserData({
+      fullName: formData.fullName,
+      email: formData.email
+    });
     navigate("/setup-pin");
   };
 

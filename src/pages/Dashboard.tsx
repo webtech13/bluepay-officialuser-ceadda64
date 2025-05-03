@@ -1,12 +1,13 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useUserStore } from "../stores/userStore";
 
 const Dashboard = () => {
-  const [username] = useState("Sunday");
-  const [transactions] = useState([
+  const { userData } = useUserStore();
+  const [transactions] = React.useState([
     { id: 1, type: "Airtime", amount: "₦2,000", date: "Today, 10:42 AM", status: "Completed" },
     { id: 2, type: "Data Bundle", amount: "₦5,000", date: "Yesterday, 2:15 PM", status: "Completed" },
     { id: 3, type: "Electricity Bill", amount: "₦10,000", date: "Mar 28, 8:30 AM", status: "Processing" }
@@ -18,7 +19,7 @@ const Dashboard = () => {
         <button className="text-xl">
           <Menu size={24} />
         </button>
-        <h1 className="text-2xl font-semibold">Blue Pay Pro</h1>
+        <h1 className="text-2xl font-semibold">Bluepay</h1>
         <div className="w-8 h-8">
           <Bell size={24} />
         </div>
@@ -28,12 +29,14 @@ const Dashboard = () => {
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
             <Avatar className="w-12 h-12 border-2 border-white">
-              <AvatarImage src="/lovable-uploads/38375faa-d272-4dc6-b614-787c50a334a6.png" alt="Profile" />
+              {userData?.profileImage ? (
+                <AvatarImage src={userData.profileImage} alt="Profile" className="object-cover" />
+              ) : null}
               <AvatarFallback className="bg-yellow-500">
                 <User className="text-white" />
               </AvatarFallback>
             </Avatar>
-            <h2 className="text-xl font-semibold">Hi, {username}</h2>
+            <h2 className="text-xl font-semibold">Hi, {userData?.fullName || "User"}</h2>
           </div>
           <div className="w-8 h-8 bg-bluepay-blue rounded-full flex items-center justify-center">
             <Bell size={20} className="text-white" />

@@ -15,7 +15,7 @@ const Index = () => {
           </div>
         </header>
 
-        <main className="flex-1 flex flex-col p-6 justify-between">
+        <main className="flex-1 flex flex-col p-6 justify-center">
           <div className="mt-16">
             <h1 className="text-5xl font-bold mb-4">Get Your Account Ready And Instantly.</h1>
             <p className="text-lg mb-10">
@@ -28,14 +28,6 @@ const Index = () => {
             >
               Get Started
             </Button>
-          </div>
-
-          <div className="mt-auto">
-            <img 
-              src="/lovable-uploads/38375faa-d272-4dc6-b614-787c50a334a6.png" 
-              alt="Person using Bluepay app" 
-              className="object-contain max-h-[400px]"
-            />
           </div>
         </main>
       </div>
