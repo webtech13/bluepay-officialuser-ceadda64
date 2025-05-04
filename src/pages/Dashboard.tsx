@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +49,10 @@ const Dashboard = () => {
           <p className="text-lg mb-2">Available Balance</p>
           <div className="flex justify-between items-center">
             <h3 className="text-4xl font-bold">₦200,000</h3>
-            <Button className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold">
+            <Button 
+              className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold"
+              onClick={() => navigate("/withdraw")}
+            >
               Withdraw
             </Button>
           </div>
@@ -74,7 +76,10 @@ const Dashboard = () => {
               </div>
               <p className="text-xs">Transfer</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center cursor-pointer" 
+              onClick={() => navigate("/buy-bpc")}
+            >
               <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
                 <Wallet className="h-6 w-6 text-bluepay-blue" />
               </div>
