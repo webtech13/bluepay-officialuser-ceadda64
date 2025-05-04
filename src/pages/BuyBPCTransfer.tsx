@@ -1,113 +1,118 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { useUserStore } from "../stores/userStore";
 import { toast } from "@/hooks/use-toast";
-import { ChevronDown } from "lucide-react";
 
 const BuyBPCTransfer = () => {
   const navigate = useNavigate();
-  const { userData } = useUserStore();
-  const [accountName, setAccountName] = useState("");
-  const [accountNumber, setAccountNumber] = useState("");
-  const [bank, setBank] = useState("Access Bank");
-  const [amount, setAmount] = useState("");
-  const [bpcCode, setBpcCode] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!accountName || !accountNumber || !amount) {
+  const email = "sundaychinemerem66@gmail.com";
+  
+  const handleCopy = (text: string, type: string) => {
+    navigator.clipboard.writeText(text).then(() => {
       toast({
-        variant: "destructive",
-        description: "Please fill in all required fields",
+        description: `${type} copied to clipboard!`,
+        duration: 2000,
       });
-      return;
-    }
-    
-    toast({
-      description: "Transfer initiated successfully!",
     });
-    
-    navigate("/dashboard");
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-blue-600 text-white py-5 px-5 text-center">
-        <h1 className="text-2xl font-bold">Transfer To Bank</h1>
+      <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
+        <button className="text-xl">
+          <span className="sr-only">Menu</span>
+        </button>
+        <h1 className="text-2xl font-semibold">BLUEPAY2025</h1>
+        <div className="w-8 h-8">
+          <span className="sr-only">Notifications</span>
+        </div>
       </header>
 
-      <div className="p-5">
-        <h2 className="text-3xl font-bold mb-6">Bank Details</h2>
+      <div className="bg-gray-200 py-4 px-5 flex items-center justify-between">
+        <div className="flex items-center">
+          <button onClick={() => navigate(-1)} className="mr-3">
+            <ArrowLeft size={24} />
+          </button>
+          <h2 className="text-xl font-bold">Bank Transfer</h2>
+        </div>
+        <button 
+          onClick={() => navigate(-1)} 
+          className="text-red-500 font-medium"
+        >
+          Cancel
+        </button>
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="relative">
-            <Input
-              type="text"
-              value={accountName}
-              onChange={(e) => setAccountName(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
-              placeholder="Account Name"
-            />
-          </div>
-          
-          <div className="relative">
-            <Input
-              type="text"
-              value={accountNumber}
-              onChange={(e) => setAccountNumber(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
-              placeholder="Account Number (10 digits)"
-              maxLength={10}
-            />
-          </div>
+      <div className="flex flex-col items-center p-6 mb-6">
+        <h1 className="text-4xl font-bold mb-2">NGN 6,500</h1>
+        <p className="text-gray-600">{email}</p>
+      </div>
 
-          <div className="relative border-2 border-blue-600 rounded-lg">
-            <div className="flex items-center justify-between p-4">
-              <span className="text-lg">{bank}</span>
-              <ChevronDown size={20} />
-            </div>
+      <div className="bg-blue-50 mx-5 p-5 rounded-lg">
+        <h3 className="text-blue-700 text-lg font-semibold mb-2">Instructions:</h3>
+        <ol className="list-decimal pl-5 text-blue-700 space-y-3">
+          <li>Copy the account details below</li>
+          <li>Open your bank app and make a transfer</li>
+          <li>Return here and click "I have made this bank Transfer"</li>
+          <li>Wait for confirmation (usually within 5 minutes)</li>
+        </ol>
+      </div>
+
+      <div className="bg-white m-5 p-5 rounded-lg border border-gray-200">
+        <div className="mb-4">
+          <p className="text-gray-500 text-sm">Amount</p>
+          <div className="flex justify-between items-center">
+            <p className="text-2xl font-bold">NGN 6500</p>
+            <Button 
+              variant="default" 
+              className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
+              onClick={() => handleCopy("6500", "Amount")}
+            >
+              <Copy size={18} />
+              Copy
+            </Button>
           </div>
-          
-          <div className="relative">
-            <Input
-              type="text"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
-              placeholder="Amount"
-            />
+        </div>
+
+        <div className="mb-4 border-t pt-4">
+          <p className="text-gray-500 text-sm">Account Number</p>
+          <div className="flex justify-between items-center">
+            <p className="text-2xl font-bold">8902612254</p>
+            <Button 
+              variant="default" 
+              className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
+              onClick={() => handleCopy("8902612254", "Account Number")}
+            >
+              <Copy size={18} />
+              Copy
+            </Button>
           </div>
-          
-          <div className="relative">
-            <Input
-              type="text"
-              value={bpcCode}
-              onChange={(e) => setBpcCode(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
-              placeholder="BPC CODE (Buy BPC)"
-            />
-          </div>
-          
-          <div className="text-blue-600 text-lg font-semibold">
-            <p>Buy BPC code</p>
-          </div>
-          
-          <div className="mt-8">
-            <p className="text-2xl font-bold">Available Balance: ₦200,000</p>
-          </div>
-          
-          <Button 
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-xl py-6 mt-4"
-          >
-            Submit
-          </Button>
-        </form>
+        </div>
+
+        <div className="mb-4 border-t pt-4">
+          <p className="text-gray-500 text-sm">Bank Name</p>
+          <p className="text-2xl font-bold">PALMPAY</p>
+        </div>
+
+        <div className="mb-4 border-t pt-4">
+          <p className="text-gray-500 text-sm">Account Name</p>
+          <p className="text-2xl font-bold">EBUKA SABASTINE</p>
+        </div>
+      </div>
+
+      <p className="text-center px-5 mb-4 text-gray-700">
+        Pay to this specific account and get your BPC code
+      </p>
+
+      <div className="px-5 mb-8">
+        <Button 
+          className="bg-blue-600 hover:bg-blue-700 w-full py-6 text-lg font-semibold"
+          onClick={() => navigate("/buy-bpc/processing")}
+        >
+          I have made this bank Transfer
+        </Button>
       </div>
     </div>
   );

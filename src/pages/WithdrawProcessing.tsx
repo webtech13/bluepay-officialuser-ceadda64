@@ -9,7 +9,7 @@ const WithdrawProcessing = () => {
     // Simulate a processing delay and then redirect
     const timer = setTimeout(() => {
       navigate("/dashboard");
-    }, 5000);
+    }, 3000); // Changed to 3 seconds to match BuyBPCProcessing
     
     return () => clearTimeout(timer);
   }, [navigate]);
