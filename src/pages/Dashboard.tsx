@@ -6,13 +6,8 @@ import { useUserStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { userData } = useUserStore();
+  const { userData, balance, transactions } = useUserStore();
   const navigate = useNavigate();
-  const [transactions] = React.useState([
-    { id: 1, type: "Airtime", amount: "₦2,000", date: "Today, 10:42 AM", status: "Completed" },
-    { id: 2, type: "Data Bundle", amount: "₦5,000", date: "Yesterday, 2:15 PM", status: "Completed" },
-    { id: 3, type: "Electricity Bill", amount: "₦10,000", date: "Mar 28, 8:30 AM", status: "Processing" }
-  ]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
@@ -48,7 +43,7 @@ const Dashboard = () => {
         <div className="bg-bluepay-blue text-white rounded-xl p-5 mb-8">
           <p className="text-lg mb-2">Available Balance</p>
           <div className="flex justify-between items-center">
-            <h3 className="text-4xl font-bold">₦200,000</h3>
+            <h3 className="text-4xl font-bold">₦{balance.toLocaleString()}</h3>
             <Button 
               className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold"
               onClick={() => navigate("/withdraw")}
@@ -140,11 +135,14 @@ const Dashboard = () => {
           </div>
           
           <div className="space-y-3">
-            {transactions.map(transaction => (
+            {transactions.slice(0, 5).map(transaction => (
               <div key={transaction.id} className="flex justify-between py-2 border-b border-gray-100">
                 <div>
                   <p className="font-medium">{transaction.type}</p>
                   <p className="text-xs text-gray-500">{transaction.date}</p>
+                  {transaction.recipient && (
+                    <p className="text-xs text-gray-500">{transaction.recipient}</p>
+                  )}
                 </div>
                 <div className="text-right">
                   <p className="font-semibold">{transaction.amount}</p>
