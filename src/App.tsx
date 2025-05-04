@@ -13,9 +13,12 @@ import NotFound from "./pages/NotFound";
 import Withdraw from "./pages/Withdraw";
 import WithdrawProcessing from "./pages/WithdrawProcessing";
 import BuyBPC from "./pages/BuyBPC";
-import BuyBPCProcessing from "./pages/BuyBPCProcessing";
-import BuyBPCTransfer from "./pages/BuyBPCTransfer";
+import BuyBPCPayment from "./pages/BuyBPCPayment";
+import BuyBPCVerifying from "./pages/BuyBPCVerifying";
 import BuyBPCConfirmation from "./pages/BuyBPCConfirmation";
+import AirtimePurchase from "./pages/AirtimePurchase";
+import DataPurchase from "./pages/DataPurchase";
+import Support from "./pages/Support";
 
 const queryClient = new QueryClient();
 
@@ -35,9 +38,12 @@ const App = () => (
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/withdraw/processing" element={<WithdrawProcessing />} />
           <Route path="/buy-bpc" element={<BuyBPC />} />
-          <Route path="/buy-bpc/processing" element={<BuyBPCProcessing />} />
-          <Route path="/buy-bpc/transfer" element={<BuyBPCTransfer />} />
+          <Route path="/buy-bpc/payment" element={<BuyBPCPayment />} />
+          <Route path="/buy-bpc/verifying" element={<BuyBPCVerifying />} />
           <Route path="/buy-bpc/confirmation" element={<BuyBPCConfirmation />} />
+          <Route path="/airtime" element={<AirtimePurchase />} />
+          <Route path="/data" element={<DataPurchase />} />
+          <Route path="/support" element={<Support />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

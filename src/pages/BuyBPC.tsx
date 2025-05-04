@@ -10,7 +10,7 @@ import { toast } from "@/hooks/use-toast";
 const BuyBPC = () => {
   const navigate = useNavigate();
   const { userData } = useUserStore();
-  const [amount, setAmount] = useState("₦6,500");
+  const [amount, setAmount] = useState("₦6,200");
   const [fullName, setFullName] = useState(userData?.fullName || "");
   const [email, setEmail] = useState(userData?.email || "");
 
@@ -25,7 +25,7 @@ const BuyBPC = () => {
       return;
     }
     
-    navigate("/buy-bpc/processing");
+    navigate("/buy-bpc/payment");
   };
 
   return (

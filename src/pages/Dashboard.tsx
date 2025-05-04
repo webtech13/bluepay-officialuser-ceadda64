@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -86,7 +87,10 @@ const Dashboard = () => {
               </div>
               <p className="text-xs">Watch</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => navigate("/airtime")}
+            >
               <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
                 <Phone className="h-6 w-6 text-bluepay-blue" />
               </div>
@@ -98,7 +102,10 @@ const Dashboard = () => {
         <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
           <h3 className="font-medium mb-4">More Services</h3>
           <div className="grid grid-cols-4 gap-6">
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => navigate("/data")}
+            >
               <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
                 <BarChart2 className="h-6 w-6 text-bluepay-blue" />
               </div>
@@ -110,15 +117,18 @@ const Dashboard = () => {
               </div>
               <p className="text-xs">About</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div 
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => navigate("/support")}
+            >
               <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
                 <RefreshCw className="h-6 w-6 text-bluepay-blue" />
               </div>
               <p className="text-xs">Support</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center cursor-pointer"
-                   onClick={() => navigate("/profile")}>
+            <div className="flex flex-col items-center cursor-pointer" 
+                 onClick={() => navigate("/profile")}>
+              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
                 <User className="h-6 w-6 text-bluepay-blue" />
               </div>
               <p className="text-xs">Profile</p>
@@ -170,11 +180,17 @@ const Dashboard = () => {
             <Plus size={24} />
           </Button>
         </div>
-        <div className="flex flex-col items-center">
+        <div 
+          className="flex flex-col items-center cursor-pointer" 
+          onClick={() => navigate("/data")}
+        >
           <BarChart2 size={20} className="text-white/60" />
-          <span className="text-xs text-white/60">Stats</span>
+          <span className="text-xs text-white/60">Data</span>
         </div>
-        <div className="flex flex-col items-center" onClick={() => navigate("/profile")}>
+        <div 
+          className="flex flex-col items-center cursor-pointer" 
+          onClick={() => navigate("/profile")}
+        >
           <User size={20} className="text-white/60" />
           <span className="text-xs text-white/60">Profile</span>
         </div>
