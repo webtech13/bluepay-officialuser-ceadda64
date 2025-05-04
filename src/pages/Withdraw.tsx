@@ -6,22 +6,66 @@ import { Input } from "@/components/ui/input";
 import { useUserStore } from "../stores/userStore";
 import { toast } from "@/hooks/use-toast";
 import { ChevronDown } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Withdraw = () => {
   const navigate = useNavigate();
-  const { userData, updateBalance, addTransaction } = useUserStore();
+  const { userData, balance, updateBalance, addTransaction } = useUserStore();
   const [accountName, setAccountName] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
-  const [bank, setBank] = useState("Access Bank");
+  const [bank, setBank] = useState("");
   const [amount, setAmount] = useState("");
   const [bpcCode, setBpcCode] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBankDropdown, setShowBankDropdown] = useState(false);
+
+  const nigerianBanks = [
+    "Access Bank",
+    "Zenith Bank",
+    "First Bank",
+    "GTBank",
+    "UBA",
+    "Fidelity Bank",
+    "Ecobank",
+    "Sterling Bank",
+    "Union Bank",
+    "Wema Bank",
+    "FCMB",
+    "Polaris Bank",
+    "Stanbic IBTC",
+    "Heritage Bank",
+    "Keystone Bank",
+    "Jaiz Bank",
+    "Unity Bank",
+    "Providus Bank",
+    "TAJBank",
+    "SunTrust Bank",
+    "Globus Bank",
+    "Premium Trust Bank",
+    // Mobile Banks
+    "Kuda Bank",
+    "Moniepoint",
+    "PalmPay",
+    "OPay",
+    "VFD Microfinance Bank",
+    "Brass Bank",
+    "Carbon",
+    "Sparkle",
+    "Rubies Bank",
+    "Mint Digital Bank",
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    if (!accountName || !accountNumber || !amount) {
+    if (!accountName || !accountNumber || !bank || !amount) {
       toast({
         variant: "destructive",
         description: "Please fill in all required fields",
@@ -101,11 +145,19 @@ const Withdraw = () => {
             />
           </div>
 
-          <div className="relative border-2 border-blue-600 rounded-lg">
-            <div className="flex items-center justify-between p-4">
-              <span className="text-lg">{bank}</span>
-              <ChevronDown size={20} />
-            </div>
+          <div className="relative">
+            <Select value={bank} onValueChange={setBank}>
+              <SelectTrigger className="w-full border-2 border-blue-600 rounded-lg p-4 h-14 text-lg">
+                <SelectValue placeholder="Select Bank" />
+              </SelectTrigger>
+              <SelectContent className="max-h-[300px]">
+                {nigerianBanks.map((bankName) => (
+                  <SelectItem key={bankName} value={bankName}>
+                    {bankName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           
           <div className="relative">
@@ -133,7 +185,7 @@ const Withdraw = () => {
           </div>
           
           <div className="mt-8">
-            <p className="text-2xl font-bold">Available Balance: ₦200,000</p>
+            <p className="text-2xl font-bold">Available Balance: ₦{balance.toLocaleString()}</p>
           </div>
           
           <Button 

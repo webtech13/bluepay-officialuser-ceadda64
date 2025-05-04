@@ -15,6 +15,7 @@ import WithdrawProcessing from "./pages/WithdrawProcessing";
 import BuyBPC from "./pages/BuyBPC";
 import BuyBPCProcessing from "./pages/BuyBPCProcessing";
 import BuyBPCTransfer from "./pages/BuyBPCTransfer";
+import BuyBPCConfirmation from "./pages/BuyBPCConfirmation";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/buy-bpc" element={<BuyBPC />} />
           <Route path="/buy-bpc/processing" element={<BuyBPCProcessing />} />
           <Route path="/buy-bpc/transfer" element={<BuyBPCTransfer />} />
+          <Route path="/buy-bpc/confirmation" element={<BuyBPCConfirmation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

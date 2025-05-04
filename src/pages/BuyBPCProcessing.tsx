@@ -1,14 +1,15 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BuyBPCProcessing = () => {
   const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(true);
 
   useEffect(() => {
-    // Simulate a processing delay and then redirect
+    // Simulate a processing delay and then navigate to confirmation
     const timer = setTimeout(() => {
-      navigate("/buy-bpc/transfer");
+      navigate("/buy-bpc/confirmation");
     }, 3000);
     
     return () => clearTimeout(timer);
@@ -31,9 +32,9 @@ const BuyBPCProcessing = () => {
           <div className="w-full h-full rounded-full border-4 border-gray-200 border-t-blue-600 animate-spin"></div>
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 text-center">Processing your request</h1>
+        <h1 className="text-3xl font-bold mb-4 text-center">Processing your payment</h1>
         <p className="text-lg text-gray-500 text-center">
-          Please wait while we prepare your payment details...
+          Please wait while we confirm your bank transfer...
         </p>
       </div>
     </div>

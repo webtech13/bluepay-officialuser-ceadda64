@@ -18,6 +18,10 @@ const BuyBPCTransfer = () => {
     });
   };
 
+  const handleTransferConfirm = () => {
+    navigate("/buy-bpc/confirmation");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
@@ -109,7 +113,7 @@ const BuyBPCTransfer = () => {
       <div className="px-5 mb-8">
         <Button 
           className="bg-blue-600 hover:bg-blue-700 w-full py-6 text-lg font-semibold"
-          onClick={() => navigate("/buy-bpc/processing")}
+          onClick={handleTransferConfirm}
         >
           I have made this bank Transfer
         </Button>
