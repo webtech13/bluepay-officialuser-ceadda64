@@ -7,7 +7,7 @@ import { toast } from "@/hooks/use-toast";
 
 const BuyBPCTransfer = () => {
   const navigate = useNavigate();
-  const email = "sundaychinemerem66@gmail.com";
+  const email = "bluepaycustomerservice25@gmail.com";
   
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text).then(() => {
