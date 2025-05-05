@@ -33,7 +33,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
-              onClick={() => window.open('mailto:support@bluepay2025.com')}
+              onClick={() => window.open('mailto:bluepaycustomerservice25@gmail.com')}
             >
               Contact via Email
             </Button>
@@ -51,7 +51,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
-              onClick={() => window.open('https://t.me/bluepay2025support')}
+              onClick={() => window.open('https://t.me/Officialbluepay')}
             >
               Open Telegram
             </Button>
