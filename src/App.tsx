@@ -19,6 +19,7 @@ import BuyBPCConfirmation from "./pages/BuyBPCConfirmation";
 import AirtimePurchase from "./pages/AirtimePurchase";
 import DataPurchase from "./pages/DataPurchase";
 import Support from "./pages/Support";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/airtime" element={<AirtimePurchase />} />
           <Route path="/data" element={<DataPurchase />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

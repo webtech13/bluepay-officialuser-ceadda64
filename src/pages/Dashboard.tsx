@@ -10,10 +10,14 @@ const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
   const navigate = useNavigate();
 
+  const handleMenuClick = () => {
+    navigate("/admin");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       <header className="bg-bluepay-blue text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
-        <button className="text-xl">
+        <button className="text-xl" onClick={handleMenuClick}>
           <Menu size={24} />
         </button>
         <h1 className="text-2xl font-semibold">BLUEPAY2025</h1>
