@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -23,7 +22,6 @@ const Withdraw = () => {
   const [amount, setAmount] = useState("");
   const [bpcCode, setBpcCode] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showBankDropdown, setShowBankDropdown] = useState(false);
 
   const nigerianBanks = [
     "Access Bank",
@@ -180,7 +178,10 @@ const Withdraw = () => {
             />
           </div>
           
-          <div className="text-blue-600 text-lg font-semibold">
+          <div 
+            className="text-blue-600 text-lg font-semibold cursor-pointer"
+            onClick={() => navigate("/buy-bpc")}
+          >
             <p>Buy BPC code</p>
           </div>
           

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,8 +15,7 @@ import {
 const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
   const navigate = useNavigate();
-  const [showPlatformMenu, setShowPlatformMenu] = useState(false);
-
+  
   const handleMenuClick = () => {
     navigate("/admin");
   };

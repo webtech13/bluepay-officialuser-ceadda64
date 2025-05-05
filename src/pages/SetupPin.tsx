@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Fingerprint, X, Camera, Upload, User, ArrowLeft, Shield, Clock, Settings } from "lucide-react";
@@ -58,6 +57,31 @@ const SetupPin = () => {
 
   const handleReset = () => {
     setPin("");
+  };
+
+  const handleFingerprint = () => {
+    // Show a toast notification simulating fingerprint authentication
+    toast({
+      title: "Fingerprint Scan",
+      description: "Fingerprint authentication simulated. PIN entered automatically.",
+    });
+    
+    // Simulate a successful fingerprint authentication
+    setTimeout(() => {
+      // If on pin verification page, navigate to dashboard
+      if (window.location.pathname === '/pin') {
+        navigate("/dashboard");
+      } else {
+        // If setting up pin, generate a random PIN and navigate
+        const randomPin = Math.floor(1000 + Math.random() * 9000).toString();
+        setUserPin(randomPin);
+        toast({
+          title: "PIN Created",
+          description: `Your PIN has been set to: ${randomPin}`,
+        });
+        navigate("/dashboard");
+      }
+    }, 1500);
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -241,7 +265,10 @@ const SetupPin = () => {
               >
                 0
               </button>
-              <button className="w-20 h-20 rounded-full bg-white flex items-center justify-center transition-all">
+              <button 
+                className="w-20 h-20 rounded-full bg-white flex items-center justify-center transition-all"
+                onClick={handleFingerprint}
+              >
                 <Fingerprint className="text-bluepay-blue w-8 h-8" />
               </button>
               <button

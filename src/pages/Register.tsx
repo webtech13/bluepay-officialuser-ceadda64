@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
@@ -30,6 +29,10 @@ const Register = () => {
     navigate("/setup-pin");
   };
 
+  const handleHelpClick = () => {
+    window.open("https://t.me/Officialbluepay", "_blank");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-bluepay-blue text-white">
       <header className="p-4">
@@ -37,13 +40,13 @@ const Register = () => {
           <ArrowLeft className="h-5 w-5 mr-2" />
         </button>
         <div className="absolute top-4 right-4">
-          <span className="text-white">You Need Help?</span>
+          <span className="text-white cursor-pointer" onClick={handleHelpClick}>You Need Help?</span>
         </div>
       </header>
 
       <div className="flex-1 flex flex-col justify-center p-6">
         <div className="max-w-md w-full mx-auto">
-          <h1 className="text-3xl font-bold mb-2 text-white text-center">BLUEPAY2025</h1>
+          <h1 className="text-3xl font-bold mb-2 text-white text-center">BLUEPAY</h1>
           <h2 className="text-2xl font-bold mb-4 text-white">Welcome!</h2>
           <p className="text-gray-100 mb-6">
             Get your account ready and instantly start buying, selling airtime and data online and start paying all your bills in cheaper price.
