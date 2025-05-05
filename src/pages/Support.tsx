@@ -95,7 +95,7 @@ const Support = () => {
 
         <div className="mt-8 text-center">
           <p className="text-gray-500">Available 24/7 for your support needs</p>
-          <p className="text-blue-600 font-medium mt-2">support@bluepay2025.com</p>
+          <p className="text-blue-600 font-medium mt-2">bluepaycustomerservice25@gmail.com</p>
         </div>
       </div>
     </div>
