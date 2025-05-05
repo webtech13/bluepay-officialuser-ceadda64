@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Fingerprint, X, Camera, Upload, User, ArrowLeft, Shield, Clock, Settings } from "lucide-react";
@@ -14,6 +15,7 @@ const SetupPin = () => {
   const maxPinLength = 4;
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [showProfile, setShowProfile] = useState(false);
+  const [isFingerprintScanning, setIsFingerprintScanning] = useState(false);
 
   useEffect(() => {
     // If user tries to access pin page directly without registration
@@ -60,27 +62,54 @@ const SetupPin = () => {
   };
 
   const handleFingerprint = () => {
-    // Show a toast notification simulating fingerprint authentication
+    // Simulate accessing device fingerprint scanner
+    setIsFingerprintScanning(true);
+    
+    // Show initial toast notification
     toast({
-      title: "Fingerprint Scan",
-      description: "Fingerprint authentication simulated. PIN entered automatically.",
+      title: "Accessing Fingerprint Scanner",
+      description: "Please place your finger on the fingerprint sensor...",
     });
     
-    // Simulate a successful fingerprint authentication
+    // Simulate the scanning process with multiple steps
     setTimeout(() => {
-      // If on pin verification page, navigate to dashboard
-      if (window.location.pathname === '/pin') {
-        navigate("/dashboard");
-      } else {
-        // If setting up pin, generate a random PIN and navigate
-        const randomPin = Math.floor(1000 + Math.random() * 9000).toString();
-        setUserPin(randomPin);
+      toast({
+        title: "Scanning Fingerprint",
+        description: "Reading fingerprint data...",
+      });
+      
+      setTimeout(() => {
         toast({
-          title: "PIN Created",
-          description: `Your PIN has been set to: ${randomPin}`,
+          title: "Verifying Identity",
+          description: "Matching fingerprint with stored data...",
         });
-        navigate("/dashboard");
-      }
+        
+        setTimeout(() => {
+          setIsFingerprintScanning(false);
+          
+          // Simulate a successful fingerprint authentication
+          toast({
+            title: "Authentication Successful",
+            description: "Fingerprint verified successfully!",
+          });
+          
+          setTimeout(() => {
+            // If on pin verification page, navigate to dashboard
+            if (window.location.pathname === '/pin') {
+              navigate("/dashboard");
+            } else {
+              // If setting up pin, generate a random PIN and navigate
+              const randomPin = Math.floor(1000 + Math.random() * 9000).toString();
+              setUserPin(randomPin);
+              toast({
+                title: "PIN Created",
+                description: `Your PIN has been set to: ${randomPin}`,
+              });
+              navigate("/dashboard");
+            }
+          }, 500);
+        }, 1200);
+      }, 1000);
     }, 1500);
   };
 
@@ -255,6 +284,7 @@ const SetupPin = () => {
                   key={num}
                   onClick={() => handleNumberClick(num)}
                   className="w-20 h-20 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-2xl font-medium text-white transition-all"
+                  disabled={isFingerprintScanning}
                 >
                   {num}
                 </button>
@@ -262,18 +292,21 @@ const SetupPin = () => {
               <button
                 onClick={() => handleNumberClick(0)}
                 className="w-20 h-20 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-2xl font-medium text-white transition-all"
+                disabled={isFingerprintScanning}
               >
                 0
               </button>
               <button 
-                className="w-20 h-20 rounded-full bg-white flex items-center justify-center transition-all"
+                className={`w-20 h-20 rounded-full ${isFingerprintScanning ? 'bg-white/50' : 'bg-white'} flex items-center justify-center transition-all ${isFingerprintScanning ? 'animate-pulse' : ''}`}
                 onClick={handleFingerprint}
+                disabled={isFingerprintScanning}
               >
-                <Fingerprint className="text-bluepay-blue w-8 h-8" />
+                <Fingerprint className={`${isFingerprintScanning ? 'text-bluepay-blue/70' : 'text-bluepay-blue'} w-8 h-8`} />
               </button>
               <button
                 onClick={handleDelete}
                 className="w-20 h-20 rounded-full bg-white flex items-center justify-center transition-all"
+                disabled={isFingerprintScanning}
               >
                 <X className="text-bluepay-blue w-8 h-8" />
               </button>
@@ -285,6 +318,7 @@ const SetupPin = () => {
                 variant="ghost"
                 onClick={handleReset}
                 className="text-white hover:text-gray-200 hover:bg-white/10"
+                disabled={isFingerprintScanning}
               >
                 Reset passcode
               </Button>

@@ -11,7 +11,7 @@ const Admin = () => {
     // Show sidebar with a slight delay for animation
     const timer = setTimeout(() => {
       setShowSidebar(true);
-    }, 100);
+    }, 300); // Slowed down animation for better UX
     
     return () => clearTimeout(timer);
   }, []);
@@ -20,7 +20,7 @@ const Admin = () => {
     setShowSidebar(false);
     setTimeout(() => {
       navigate("/dashboard");
-    }, 300); // Wait for animation to complete
+    }, 500); // Wait longer for animation to complete
   };
 
   const handleAdminClick = () => {
@@ -45,12 +45,16 @@ const Admin = () => {
       </div>
 
       {/* Sidebar overlay with animation */}
-      <div className={`fixed inset-0 bg-black/80 z-40 transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
-        <div className={`w-[85%] h-full bg-gray-900 flex flex-col transform transition-transform duration-300 ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed inset-0 bg-black/80 z-40 transition-opacity duration-500 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`w-[85%] h-full bg-gray-900 flex flex-col transform transition-transform duration-500 ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
           {/* Logo and title area */}
           <div className="flex flex-col items-center justify-center py-12">
-            <div className="w-24 h-24 bg-blue-900 rounded-md mb-6 flex items-center justify-center">
-              <span className="text-blue-400 text-7xl font-bold">B</span>
+            <div className="w-40 h-40 mb-6 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/9c19c608-d185-4699-b545-9999f7f6fe47.png" 
+                alt="BLUEPAY Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <h1 className="text-white text-3xl font-bold">BLUEPAY</h1>
           </div>

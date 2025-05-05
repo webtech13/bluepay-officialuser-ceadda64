@@ -19,11 +19,14 @@ const MoreServices = () => {
           </div>
           <p className="text-xs">Data</p>
         </div>
-        <div className="flex flex-col items-center">
+        <div 
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => navigate("/faq")}
+        >
           <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
             <HelpCircle className="h-6 w-6 text-bluepay-blue" />
           </div>
-          <p className="text-xs">About</p>
+          <p className="text-xs">FAQ</p>
         </div>
         <div 
           className="flex flex-col items-center cursor-pointer"
