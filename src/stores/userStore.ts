@@ -40,10 +40,7 @@ export const useUserStore = create<UserState>()(
       userPin: '',
       themeMode: 'light',
       balance: 200000, // Initial balance of 200,000
-      transactions: [
-        { id: 1, type: "Airtime", amount: "₦2,000", date: "Today, 10:42 AM", status: "Completed" },
-        { id: 2, type: "Data Bundle", amount: "₦5,000", date: "Yesterday, 2:15 PM", status: "Completed" },
-        { id: 3, type: "Electricity Bill", amount: "₦10,000", date: "Mar 28, 8:30 AM", status: "Processing" }
+      transactions:
       ],
       setUserData: (data) => set((state) => ({
         userData: { ...state.userData, ...data }
