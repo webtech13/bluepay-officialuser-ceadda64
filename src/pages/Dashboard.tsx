@@ -1,231 +1,30 @@
 
-import React, { useState } from "react";
-import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React from "react";
 import { useUserStore } from "../stores/userStore";
-import { useNavigate } from "react-router-dom";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import Header from "../components/dashboard/Header";
+import UserGreeting from "../components/dashboard/UserGreeting";
+import BalanceCard from "../components/dashboard/BalanceCard";
+import QuickActions from "../components/dashboard/QuickActions";
+import MoreServices from "../components/dashboard/MoreServices";
+import RecentTransactions from "../components/dashboard/RecentTransactions";
+import BottomNavigation from "../components/dashboard/BottomNavigation";
 
 const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
-  const navigate = useNavigate();
-  
-  const handleMenuClick = () => {
-    navigate("/admin");
-  };
-  
-  const handleJoinTelegram = () => {
-    window.open("https://t.me/Officialbluepay", "_blank");
-  };
-  
-  const handleJoinWhatsapp = () => {
-    // This is a placeholder URL - replace with actual WhatsApp group link
-    window.open("https://chat.whatsapp.com/bluepaygroup", "_blank");
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-bluepay-blue text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
-        <button className="text-xl" onClick={handleMenuClick}>
-          <Menu size={24} />
-        </button>
-        <h1 className="text-2xl font-semibold">BLUEPAY</h1>
-        <div className="w-8 h-8">
-          <Bell size={24} />
-        </div>
-      </header>
+      <Header />
 
       <div className="p-5">
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center gap-3">
-            <Avatar className="w-12 h-12 border-2 border-white">
-              {userData?.profileImage ? (
-                <AvatarImage src={userData.profileImage} alt="Profile" className="object-cover" />
-              ) : (
-                <AvatarFallback className="bg-yellow-500">
-                  <User className="text-white" />
-                </AvatarFallback>
-              )}
-            </Avatar>
-            <h2 className="text-xl font-semibold">Hi, {userData?.fullName || "User"}</h2>
-          </div>
-          <div className="w-8 h-8 bg-bluepay-blue rounded-full flex items-center justify-center">
-            <Bell size={20} className="text-white" />
-          </div>
-        </div>
-
-        <div className="bg-bluepay-blue text-white rounded-xl p-5 mb-8">
-          <p className="text-lg mb-2">Available Balance</p>
-          <div className="flex justify-between items-center">
-            <h3 className="text-4xl font-bold">₦{balance.toLocaleString()}</h3>
-            <Button 
-              className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold"
-              onClick={() => navigate("/withdraw")}
-            >
-              Withdraw
-            </Button>
-          </div>
-          <div className="mt-4 bg-white/10 rounded-lg p-3">
-            <div className="flex justify-between items-center">
-              <p className="text-sm">Daily spend target</p>
-              <p className="text-sm font-semibold">₦200,000</p>
-            </div>
-            <div className="w-full bg-white/20 h-2 rounded-full mt-2">
-              <div className="bg-white h-2 rounded-full" style={{width: "35%"}}></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-          <h3 className="font-medium mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-4 gap-6">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <div className="flex flex-col items-center cursor-pointer">
-                  <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                    <RefreshCw className="h-6 w-6 text-bluepay-blue" />
-                  </div>
-                  <p className="text-xs">Platform</p>
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={handleJoinTelegram}>
-                  Join Telegram Channel
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleJoinWhatsapp}>
-                  Join WhatsApp Group
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <div 
-              className="flex flex-col items-center cursor-pointer" 
-              onClick={() => navigate("/buy-bpc")}
-            >
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <Wallet className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Buy BPC</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <Play className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Watch</p>
-            </div>
-            <div 
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => navigate("/airtime")}
-            >
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <Phone className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Airtime</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-          <h3 className="font-medium mb-4">More Services</h3>
-          <div className="grid grid-cols-4 gap-6">
-            <div 
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => navigate("/data")}
-            >
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <BarChart2 className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Data</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <HelpCircle className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">About</p>
-            </div>
-            <div 
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => navigate("/support")}
-            >
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <RefreshCw className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Support</p>
-            </div>
-            <div className="flex flex-col items-center cursor-pointer" 
-                 onClick={() => navigate("/profile")}>
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <User className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Profile</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-medium">Recent Transactions</h3>
-            <Button variant="ghost" className="h-8 px-2 text-bluepay-blue">
-              View All <ArrowRight size={16} />
-            </Button>
-          </div>
-          
-          <div className="space-y-3">
-            {transactions.slice(0, 5).map(transaction => (
-              <div key={transaction.id} className="flex justify-between py-2 border-b border-gray-100">
-                <div>
-                  <p className="font-medium">{transaction.type}</p>
-                  <p className="text-xs text-gray-500">{transaction.date}</p>
-                  {transaction.recipient && (
-                    <p className="text-xs text-gray-500">{transaction.recipient}</p>
-                  )}
-                </div>
-                <div className="text-right">
-                  <p className="font-semibold">{transaction.amount}</p>
-                  <p className={`text-xs ${transaction.status === "Completed" ? "text-green-500" : "text-orange-500"}`}>
-                    {transaction.status}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <UserGreeting userData={userData} />
+        <BalanceCard balance={balance} />
+        <QuickActions />
+        <MoreServices />
+        <RecentTransactions transactions={transactions} />
       </div>
 
-      <div className="mt-auto h-16 bg-bluepay-blue fixed bottom-0 w-full flex justify-around items-center px-4">
-        <div className="flex flex-col items-center">
-          <Wallet size={20} className="text-white" />
-          <span className="text-xs text-white">Wallet</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <RefreshCw size={20} className="text-white/60" />
-          <span className="text-xs text-white/60">Transactions</span>
-        </div>
-        <div className="flex flex-col items-center">
-          <Button className="rounded-full h-12 w-12 -mt-6 bg-white text-bluepay-blue hover:bg-gray-100">
-            <Plus size={24} />
-          </Button>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer" 
-          onClick={() => navigate("/data")}
-        >
-          <BarChart2 size={20} className="text-white/60" />
-          <span className="text-xs text-white/60">Data</span>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer" 
-          onClick={() => navigate("/profile")}
-        >
-          <User size={20} className="text-white/60" />
-          <span className="text-xs text-white/60">Profile</span>
-        </div>
-      </div>
+      <BottomNavigation />
     </div>
   );
 };
