@@ -1,4 +1,4 @@
-
+inwe
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Copy } from "lucide-react";
@@ -82,11 +82,11 @@ const BuyBPCPayment = () => {
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Account Number</p>
           <div className="flex justify-between items-center">
-            <p className="text-2xl font-bold">8902612254</p>
+            <p className="text-2xl font-bold">6957666738</p>
             <Button 
               variant="default" 
               className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
-              onClick={() => handleCopy("8902612254", "Account Number")}
+              onClick={() => handleCopy("6957666738", "Account Number")}
             >
               <Copy size={18} />
               Copy
@@ -96,12 +96,12 @@ const BuyBPCPayment = () => {
 
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Bank Name</p>
-          <p className="text-2xl font-bold">PALMPAY</p>
+          <p className="text-2xl font-bold">MONIEPOINT MFB</p>
         </div>
 
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Account Name</p>
-          <p className="text-2xl font-bold">EBUKA SABASTINE</p>
+          <p className="text-2xl font-bold">LIBERTY CHINEMEREM</p>
         </div>
       </div>
 
