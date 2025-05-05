@@ -28,7 +28,7 @@ const BuyBPCConfirmation = () => {
         <button className="text-xl">
           <span className="sr-only">Menu</span>
         </button>
-        <h1 className="text-2xl font-semibold">BLUEPAY2025</h1>
+        <h1 className="text-2xl font-semibold">BLUEPAY</h1>
         <div className="w-8 h-8">
           <span className="sr-only">Notifications</span>
         </div>

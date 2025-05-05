@@ -1,13 +1,30 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const navigate = useNavigate();
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  useEffect(() => {
+    // Show sidebar with a slight delay for animation
+    const timer = setTimeout(() => {
+      setShowSidebar(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBackToDashboard = () => {
-    navigate("/dashboard");
+    setShowSidebar(false);
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 300); // Wait for animation to complete
+  };
+
+  const handleAdminClick = () => {
+    window.open("https://t.me/Officialbluepay", "_blank");
   };
 
   return (
@@ -27,20 +44,23 @@ const Admin = () => {
         </div>
       </div>
 
-      {/* Sidebar overlay */}
-      <div className="fixed inset-0 bg-black/80 z-40">
-        <div className="w-[85%] h-full bg-gray-900 flex flex-col">
+      {/* Sidebar overlay with animation */}
+      <div className={`fixed inset-0 bg-black/80 z-40 transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`w-[85%] h-full bg-gray-900 flex flex-col transform transition-transform duration-300 ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
           {/* Logo and title area */}
           <div className="flex flex-col items-center justify-center py-12">
             <div className="w-24 h-24 bg-blue-900 rounded-md mb-6 flex items-center justify-center">
               <span className="text-blue-400 text-7xl font-bold">B</span>
             </div>
-            <h1 className="text-white text-3xl font-bold">Blue Pay Pro</h1>
+            <h1 className="text-white text-3xl font-bold">BLUEPAY</h1>
           </div>
           
           {/* Admin section */}
           <div className="px-8 py-6 mt-4 border-t border-gray-700">
-            <div className="flex items-center space-x-4">
+            <div 
+              className="flex items-center space-x-4 cursor-pointer hover:bg-gray-800 p-3 rounded-lg"
+              onClick={handleAdminClick}
+            >
               <MessageCircle className="text-white h-9 w-9" />
               <span className="text-white text-2xl font-bold">Admin</span>
             </div>

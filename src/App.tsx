@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Withdraw from "./pages/Withdraw";
 import WithdrawProcessing from "./pages/WithdrawProcessing";
 import BuyBPC from "./pages/BuyBPC";
+import BuyBPCProcessing from "./pages/BuyBPCProcessing";
 import BuyBPCPayment from "./pages/BuyBPCPayment";
 import BuyBPCVerifying from "./pages/BuyBPCVerifying";
 import BuyBPCConfirmation from "./pages/BuyBPCConfirmation";
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/withdraw/processing" element={<WithdrawProcessing />} />
           <Route path="/buy-bpc" element={<BuyBPC />} />
+          <Route path="/buy-bpc/processing" element={<BuyBPCProcessing />} />
           <Route path="/buy-bpc/payment" element={<BuyBPCPayment />} />
           <Route path="/buy-bpc/verifying" element={<BuyBPCVerifying />} />
           <Route path="/buy-bpc/confirmation" element={<BuyBPCConfirmation />} />

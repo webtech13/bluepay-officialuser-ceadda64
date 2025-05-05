@@ -1,17 +1,32 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { Bell, RefreshCw, Wallet, Play, Phone, BarChart2, HelpCircle, User, Menu, ArrowRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
   const navigate = useNavigate();
+  const [showPlatformMenu, setShowPlatformMenu] = useState(false);
 
   const handleMenuClick = () => {
     navigate("/admin");
+  };
+  
+  const handleJoinTelegram = () => {
+    window.open("https://t.me/Officialbluepay", "_blank");
+  };
+  
+  const handleJoinWhatsapp = () => {
+    // This is a placeholder URL - replace with actual WhatsApp group link
+    window.open("https://chat.whatsapp.com/bluepaygroup", "_blank");
   };
 
   return (
@@ -20,7 +35,7 @@ const Dashboard = () => {
         <button className="text-xl" onClick={handleMenuClick}>
           <Menu size={24} />
         </button>
-        <h1 className="text-2xl font-semibold">BLUEPAY2025</h1>
+        <h1 className="text-2xl font-semibold">BLUEPAY</h1>
         <div className="w-8 h-8">
           <Bell size={24} />
         </div>
@@ -70,12 +85,24 @@ const Dashboard = () => {
         <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
           <h3 className="font-medium mb-4">Quick Actions</h3>
           <div className="grid grid-cols-4 gap-6">
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
-                <RefreshCw className="h-6 w-6 text-bluepay-blue" />
-              </div>
-              <p className="text-xs">Transfer</p>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex flex-col items-center cursor-pointer">
+                  <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
+                    <RefreshCw className="h-6 w-6 text-bluepay-blue" />
+                  </div>
+                  <p className="text-xs">Platform</p>
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={handleJoinTelegram}>
+                  Join Telegram Channel
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handleJoinWhatsapp}>
+                  Join WhatsApp Group
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <div 
               className="flex flex-col items-center cursor-pointer" 
               onClick={() => navigate("/buy-bpc")}

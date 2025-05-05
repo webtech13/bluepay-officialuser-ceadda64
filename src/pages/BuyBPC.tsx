@@ -10,14 +10,15 @@ import { toast } from "@/hooks/use-toast";
 const BuyBPC = () => {
   const navigate = useNavigate();
   const { userData } = useUserStore();
-  const [amount, setAmount] = useState("₦6,200");
+  const [amount] = useState("₦6,200"); // Made non-editable by removing setter
   const [fullName, setFullName] = useState(userData?.fullName || "");
   const [email, setEmail] = useState(userData?.email || "");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!amount || !fullName || !email) {
+    if (!fullName || !email) {
       toast({
         variant: "destructive",
         description: "Please fill in all fields",
@@ -25,7 +26,10 @@ const BuyBPC = () => {
       return;
     }
     
-    navigate("/buy-bpc/payment");
+    setIsSubmitting(true);
+    
+    // Navigate to processing page first
+    navigate("/buy-bpc/processing");
   };
 
   return (
@@ -41,8 +45,8 @@ const BuyBPC = () => {
             <Input
               type="text"
               value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="text-lg py-6 border-2 border-gray-300 rounded-lg"
+              readOnly
+              className="text-lg py-6 border-2 border-gray-300 rounded-lg bg-gray-100"
               placeholder="₦0.00"
             />
           </div>
@@ -71,9 +75,10 @@ const BuyBPC = () => {
           
           <Button 
             type="submit"
+            disabled={isSubmitting}
             className="w-full bg-blue-600 hover:bg-blue-700 text-xl py-6"
           >
-            Pay
+            {isSubmitting ? "Processing..." : "Pay"}
           </Button>
           
           <p className="text-center text-gray-500 text-lg">
