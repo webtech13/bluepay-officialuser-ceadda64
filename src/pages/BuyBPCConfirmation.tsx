@@ -1,72 +1,100 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Check, Copy } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
 const BuyBPCConfirmation = () => {
   const navigate = useNavigate();
-  const bpcCode = "BPC20112";
+  const bpcCode = "BPC200000";
   
-  const handleCopy = () => {
-    navigator.clipboard.writeText(bpcCode).then(() => {
-      toast({
-        description: "BPC Code copied to clipboard!",
-        duration: 2000,
-      });
+  const handleSupport = () => {
+    // This would navigate to support page in a real implementation
+    toast({
+      description: "Redirecting to support...",
+      duration: 2000,
     });
+    navigate("/support");
   };
 
-  const handleBackToDashboard = () => {
-    navigate("/dashboard");
+  const handleRecheck = () => {
+    toast({
+      description: "Checking payment status...",
+      duration: 2000,
+    });
+    // In a real implementation, this would check the payment status
+    // For now, we'll just simulate a recheck
+    setTimeout(() => {
+      toast({
+        variant: "destructive",
+        description: "Payment still not confirmed",
+        duration: 3000,
+      });
+    }, 2000);
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
-        <button className="text-xl">
-          <span className="sr-only">Menu</span>
+      <header className="bg-[#f2f2f2] text-black py-4 px-5 flex justify-between items-center sticky top-0 z-10">
+        <div className="text-xl font-medium">Bank Transfer</div>
+        <button 
+          onClick={() => navigate("/dashboard")} 
+          className="text-red-500 font-medium"
+        >
+          Cancel
         </button>
-        <h1 className="text-2xl font-semibold">BLUEPAY</h1>
-        <div className="w-8 h-8">
-          <span className="sr-only">Notifications</span>
-        </div>
       </header>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="w-24 h-24 mb-8 flex items-center justify-center">
-          <Check size={96} className="text-blue-600" strokeWidth={2} />
-        </div>
-        
-        <h1 className="text-3xl font-bold mb-4 text-center">Payment Confirmed</h1>
-        <p className="text-lg text-gray-700 text-center mb-8">
-          Your payment has been received successfully.
-        </p>
-        
-        <div className="bg-blue-50 p-6 rounded-lg w-full max-w-md mb-8">
-          <p className="text-gray-700 mb-2">Your BPC Code:</p>
-          <div className="flex items-center justify-between bg-white p-4 rounded border border-blue-200">
-            <p className="text-2xl font-bold">{bpcCode}</p>
-            <Button 
-              variant="outline"
-              size="sm"
-              onClick={handleCopy}
-              className="flex items-center gap-2 border-blue-300"
-            >
-              <Copy size={16} />
-              Copy
-            </Button>
+      <div className="flex-1 flex flex-col p-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          <div className="flex items-center mb-4 md:mb-0">
+            <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 relative">
+                <div className="absolute inset-0 rounded-full border-2 border-yellow-400"></div>
+                <div className="absolute inset-2 rounded-full border-2 border-red-500"></div>
+                <div className="absolute inset-4 rounded-full bg-blue-500"></div>
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-blue-600 mt-2">Use this code for your withdrawals.</p>
+          <div className="text-right">
+            <p className="text-3xl font-bold">NGN 6,200</p>
+            <p className="text-gray-600">sundaychinemerem66@gmail.com</p>
+          </div>
         </div>
         
-        <Button 
-          onClick={handleBackToDashboard}
-          className="w-full max-w-md bg-blue-600 hover:bg-blue-700 text-white py-4 text-xl"
-        >
-          Back to Dashboard
-        </Button>
+        <div className="text-center my-8">
+          <p className="text-xl font-medium">
+            Proceed to your bank app to complete this Transfer
+          </p>
+        </div>
+        
+        <div className="mt-10 space-y-4 text-center">
+          <div className="flex items-center justify-center mb-4">
+            <AlertCircle size={24} className="text-red-500 mr-2" />
+            <p className="text-gray-800 text-lg">
+              Payment not confirmed, need help? contact support:
+            </p>
+          </div>
+          
+          <button 
+            onClick={handleSupport}
+            className="text-blue-600 font-medium text-lg hover:underline"
+          >
+            here
+          </button>
+          
+          <Button 
+            onClick={handleRecheck}
+            className="w-full max-w-xs bg-green-600 hover:bg-green-700 text-white py-4 text-xl"
+          >
+            Re-check
+          </Button>
+          
+          <div className="mt-4 text-sm text-gray-500">
+            <p>Your BPC Code: {bpcCode}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
