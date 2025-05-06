@@ -13,7 +13,7 @@ const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-bluepay-blue">
       <Header />
 
       <div className="p-5">
