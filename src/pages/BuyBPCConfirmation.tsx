@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const BuyBPCConfirmation = () => {
   const navigate = useNavigate();
-  const bpcCode = "BPC200000";
   
   const handleSupport = () => {
     // This would navigate to support page in a real implementation
@@ -59,7 +59,6 @@ const BuyBPCConfirmation = () => {
           </div>
           <div className="text-right">
             <p className="text-3xl font-bold">NGN 6,200</p>
-            <p className="text-gray-600">sundaychinemerem66@gmail.com</p>
           </div>
         </div>
         
@@ -69,31 +68,39 @@ const BuyBPCConfirmation = () => {
           </p>
         </div>
         
-        <div className="mt-10 space-y-4 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <AlertCircle size={24} className="text-red-500 mr-2" />
-            <p className="text-gray-800 text-lg">
-              Payment not confirmed, need help? contact support:
-            </p>
+        <div className="mt-10 space-y-4">
+          <Alert variant="destructive" className="border-2 border-red-500 bg-red-50">
+            <AlertCircle className="h-8 w-8 text-red-500" />
+            <AlertDescription className="text-lg font-medium ml-2">
+              Payment not confirmed
+            </AlertDescription>
+          </Alert>
+          
+          <div className="flex items-center justify-center mt-6">
+            <div className="bg-red-100 p-4 rounded-full">
+              <AlertCircle size={48} className="text-red-600" />
+            </div>
           </div>
           
-          <button 
-            onClick={handleSupport}
-            className="text-blue-600 font-medium text-lg hover:underline"
-          >
-            here
-          </button>
+          <div className="text-center mt-4">
+            <p className="text-gray-800 text-lg font-medium">
+              Need help? Contact support:
+            </p>
+            
+            <button 
+              onClick={handleSupport}
+              className="text-blue-600 font-medium text-lg hover:underline mt-2"
+            >
+              here
+            </button>
+          </div>
           
           <Button 
             onClick={handleRecheck}
-            className="w-full max-w-xs bg-green-600 hover:bg-green-700 text-white py-4 text-xl"
+            className="w-full max-w-xs mx-auto bg-green-600 hover:bg-green-700 text-white py-4 text-xl mt-4"
           >
             Re-check
           </Button>
-          
-          <div className="mt-4 text-sm text-gray-500">
-            <p>Your BPC Code: {bpcCode}</p>
-          </div>
         </div>
       </div>
     </div>
