@@ -40,7 +40,8 @@ export const useUserStore = create<UserState>()(
       userPin: '',
       themeMode: 'light',
       balance: 200000, // Initial balance of 200,000
-      transactions: [], // Empty transactions array for now
+      transactions:
+      ],
       setUserData: (data) => set((state) => ({
         userData: { ...state.userData, ...data }
       })),

@@ -13,15 +13,11 @@ const QuickActions = () => {
   const navigate = useNavigate();
   
   const handleJoinTelegram = () => {
-    window.open("https://t.me/officialbluepay2025", "_blank");
+    window.open("https://t.me/Officialbluepay", "_blank");
   };
   
   const handleJoinWhatsapp = () => {
-    window.open("https://chat.whatsapp.com/DrJYdBP5siSA0L96wQsuLX", "_blank");
-  };
-  
-  const handleWatch = () => {
-    window.open("https://t.me/officialbluepay2025", "_blank");
+    window.open("https://chat.whatsapp.com/bluepaygroup", "_blank");
   };
 
   return (
@@ -55,7 +51,7 @@ const QuickActions = () => {
           </div>
           <p className="text-xs">Buy BPC</p>
         </div>
-        <div className="flex flex-col items-center cursor-pointer" onClick={handleWatch}>
+        <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-bluepay-blue/10 rounded-full mb-2 flex items-center justify-center">
             <Play className="h-6 w-6 text-bluepay-blue" />
           </div>
