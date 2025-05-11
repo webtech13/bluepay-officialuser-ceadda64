@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 const Support = () => {
   const navigate = useNavigate();
 
+  const handleLiveChatClick = () => {
+    window.open('https://t.me/Bluepay2025_bot', '_blank');
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
@@ -87,6 +91,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+              onClick={handleLiveChatClick}
             >
               Start Live Chat
             </Button>
