@@ -22,6 +22,7 @@ import DataPurchase from "./pages/DataPurchase";
 import Support from "./pages/Support";
 import Admin from "./pages/Admin";
 import Faq from "./pages/Faq";
+import Platform from "./pages/Platform";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/platform" element={<Platform />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

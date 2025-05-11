@@ -6,10 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const BottomNavigation = () => {
   const navigate = useNavigate();
-  
-  const handleJoinTelegram = () => {
-    window.open("https://t.me/officialbluepay2025", "_blank");
-  };
 
   return (
     <div className="h-16 bg-white border-t border-gray-200 fixed bottom-0 w-full flex justify-around items-center px-4 shadow-md">
@@ -22,7 +18,7 @@ const BottomNavigation = () => {
       </div>
       <div 
         className="flex flex-col items-center cursor-pointer" 
-        onClick={handleJoinTelegram}
+        onClick={() => navigate("/platform")}
       >
         <MessageCircle size={20} className="text-gray-500" />
         <span className="text-xs font-medium mt-1 text-gray-500">Social</span>
