@@ -1,13 +1,11 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp } from "lucide-react";
+import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
 import { useToast } from "@/components/ui/use-toast";
-import { Switch } from "@/components/ui/switch";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const Profile = () => {
@@ -16,6 +14,11 @@ const Profile = () => {
   const { userData, setUserData, themeMode, setThemeMode } = useUserStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
+  // Apply theme on component mount and when themeMode changes
+  useEffect(() => {
+    applyTheme(themeMode);
+  }, [themeMode]);
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -39,11 +42,57 @@ const Profile = () => {
   };
 
   const handleThemeChange = (value: string) => {
-    setThemeMode(value as 'dark' | 'light' | 'system' | 'white');
+    setThemeMode(value as 'dark' | 'light' | 'system' | 'device');
     toast({
       title: "Theme updated",
       description: `Theme has been set to ${value} mode`,
     });
+  };
+
+  // Function to apply theme to the document
+  const applyTheme = (mode: string) => {
+    const root = document.documentElement;
+    
+    // Remove all theme classes first
+    root.classList.remove('dark', 'light', 'system', 'device');
+    
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else if (mode === 'system') {
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark');
+      } else {
+        root.classList.add('light');
+      }
+      
+      // Add listener for system theme changes
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e: MediaQueryListEvent) => {
+        if (e.matches) {
+          root.classList.remove('light');
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+          root.classList.add('light');
+        }
+      };
+      
+      // Remove any existing listener to prevent duplicates
+      try {
+        mediaQuery.removeEventListener('change', handleChange);
+      } catch (e) {
+        console.log('No existing listener');
+      }
+      
+      // Add new listener
+      mediaQuery.addEventListener('change', handleChange);
+    } else if (mode === 'device') {
+      root.classList.add('device');
+    } else {
+      // Light mode is default
+      root.classList.add('light');
+    }
   };
 
   return (
@@ -118,10 +167,10 @@ const Profile = () => {
                     {themeMode === 'light' && <Sun className="h-5 w-5 mr-2 text-gray-500" />}
                     {themeMode === 'dark' && <Moon className="h-5 w-5 mr-2 text-gray-500" />}
                     {themeMode === 'system' && <CircleHelp className="h-5 w-5 mr-2 text-gray-500" />}
-                    {themeMode === 'white' && <Circle className="h-5 w-5 mr-2 text-gray-500" />}
+                    {themeMode === 'device' && <Smartphone className="h-5 w-5 mr-2 text-gray-500" />}
                     <p className="text-lg">{themeMode === 'light' ? 'Light Mode' : 
                                            themeMode === 'dark' ? 'Dark Mode' : 
-                                           themeMode === 'system' ? 'System Mode' : 'White Mode'}</p>
+                                           themeMode === 'system' ? 'System Mode' : 'Device Mode'}</p>
                   </div>
                 </div>
 
@@ -183,17 +232,17 @@ const Profile = () => {
                         </div>
 
                         <div 
-                          className={`flex items-center justify-between p-3 rounded-lg ${themeMode === 'white' ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50'}`}
-                          onClick={() => handleThemeChange('white')}
+                          className={`flex items-center justify-between p-3 rounded-lg ${themeMode === 'device' ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50'}`}
+                          onClick={() => handleThemeChange('device')}
                         >
                           <div className="flex items-center">
-                            <Circle className="h-5 w-5 mr-3 text-blue-600" />
+                            <Smartphone className="h-5 w-5 mr-3 text-blue-600" />
                             <div>
-                              <p className="font-medium">White Mode</p>
-                              <p className="text-sm text-gray-500">Pure white background</p>
+                              <p className="font-medium">Device Mode</p>
+                              <p className="text-sm text-gray-500">Optimized for your device</p>
                             </div>
                           </div>
-                          {themeMode === 'white' && <div className="h-3 w-3 bg-blue-500 rounded-full"></div>}
+                          {themeMode === 'device' && <div className="h-3 w-3 bg-blue-500 rounded-full"></div>}
                         </div>
                       </div>
                     </div>

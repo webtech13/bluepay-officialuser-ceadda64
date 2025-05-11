@@ -17,7 +17,7 @@ interface Transaction {
   recipient?: string;
 }
 
-type ThemeMode = 'dark' | 'light' | 'system' | 'white';
+type ThemeMode = 'dark' | 'light' | 'system' | 'device';
 
 interface UserState {
   userData: UserData | null;
@@ -40,7 +40,7 @@ export const useUserStore = create<UserState>()(
       userPin: '',
       themeMode: 'light',
       balance: 200000, // Initial balance of 200,000
-      transactions: [], // Fixed: properly initialized as an empty array
+      transactions: [],
       setUserData: (data) => set((state) => ({
         userData: { ...state.userData, ...data }
       })),

@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useUserStore } from "./stores/userStore";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
 import SetupPin from "./pages/SetupPin";
@@ -26,9 +28,60 @@ import Platform from "./pages/Platform";
 
 const queryClient = new QueryClient();
 
+// Theme management component
+const ThemeManager = () => {
+  const { themeMode } = useUserStore();
+  
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    // Remove all theme classes first
+    root.classList.remove('dark', 'light', 'system', 'device');
+    
+    if (themeMode === 'dark') {
+      root.classList.add('dark');
+    } else if (themeMode === 'system') {
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark');
+      } else {
+        root.classList.add('light');
+      }
+      
+      // Add listener for system theme changes
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e: MediaQueryListEvent) => {
+        if (e.matches) {
+          root.classList.remove('light');
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+          root.classList.add('light');
+        }
+      };
+      
+      // Add listener
+      mediaQuery.addEventListener('change', handleChange);
+      
+      // Clean up
+      return () => {
+        mediaQuery.removeEventListener('change', handleChange);
+      };
+    } else if (themeMode === 'device') {
+      root.classList.add('device');
+    } else {
+      // Light mode is default
+      root.classList.add('light');
+    }
+  }, [themeMode]);
+  
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <ThemeManager />
       <Toaster />
       <Sonner />
       <BrowserRouter>
