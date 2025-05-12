@@ -64,7 +64,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bluepay: {
-					blue: '#0000FF',
+					blue: '#0000FF',  // Pure blue like in the image
 					darkBlue: '#000080',
 					lightBlue: '#1E90FF',
 					black: '#000000',
