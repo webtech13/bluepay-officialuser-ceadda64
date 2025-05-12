@@ -11,24 +11,17 @@ const Index = () => {
       <div className="flex-1 flex flex-col">
         <header className="p-4">
           <div className="flex items-center">
-            <div className="text-3xl font-extrabold relative">
-              <span className="text-white" style={{
-                textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
-                letterSpacing: "0.05em"
-              }}>
-                BLUEPAY
-                <span className="text-xl ml-1">2025</span>
+            <div className="text-2xl font-bold relative">
+              <span className="relative z-10 bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent">
+                BLUE
               </span>
-              <div className="absolute -bottom-1 left-0 w-full">
-                <div className="h-0.5 bg-white"></div>
-                <div className="mt-0.5 h-0.5 bg-white w-3/4 mx-auto"></div>
-                <div className="mt-0.5 h-0.5 bg-white w-1/2 mx-auto"></div>
-                <div className="relative">
-                  <div className="absolute -bottom-4 left-1/4 w-1 h-3 bg-white rounded-b-full"></div>
-                  <div className="absolute -bottom-6 left-1/2 w-1 h-5 bg-white rounded-b-full"></div>
-                  <div className="absolute -bottom-4 right-1/4 w-1 h-3 bg-white rounded-b-full"></div>
-                </div>
-              </div>
+              <span className="relative z-10 bg-gradient-to-r from-blue-400 via-blue-300 to-white bg-clip-text text-transparent">
+                PAY
+              </span>
+              <span className="relative z-10 ml-1 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent text-sm font-light">
+                2025
+              </span>
+              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
             </div>
           </div>
         </header>
