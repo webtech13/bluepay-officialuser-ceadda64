@@ -101,7 +101,7 @@ const BuyBPCPayment = () => {
 
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Account Name</p>
-          <p className="text-2xl font-bold">SUNDAY LIBERTY</p>
+          <p className="text-2xl font-bold">SUNDAY CHINEMEREM</p>
         </div>
       </div>
 
