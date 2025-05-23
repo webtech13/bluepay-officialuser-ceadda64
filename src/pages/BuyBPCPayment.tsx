@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,12 @@ import { toast } from "@/hooks/use-toast";
 
 const BuyBPCPayment = () => {
   const navigate = useNavigate();
-  
+  const [showOpayAlert, setShowOpayAlert] = useState(true);
+
+  useEffect(() => {
+    setShowOpayAlert(true); // Show modal on page load
+  }, []);
+
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text).then(() => {
       toast({
@@ -23,6 +27,32 @@ const BuyBPCPayment = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
+      {showOpayAlert && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md text-center">
+            <div className="flex flex-col items-center">
+              <div className="text-green-500 text-5xl mb-4">⏺️</div>
+              <h2 className="text-red-600 text-xl font-bold mb-2">
+                Opay Service Down
+              </h2>
+              <p className="text-gray-700 mb-2">
+                Please do not use Opay bank for payments at this time.
+              </p>
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+                The Opay bank service is currently experiencing issues. Please
+                use other supported banks for your payment.
+              </div>
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white"
+                onClick={() => setShowOpayAlert(false)}
+              >
+                I Understand
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
         <button className="text-xl">
           <span className="sr-only">Menu</span>
@@ -40,10 +70,7 @@ const BuyBPCPayment = () => {
           </button>
           <h2 className="text-xl font-bold">Bank Transfer</h2>
         </div>
-        <button 
-          onClick={() => navigate(-1)} 
-          className="text-red-500 font-medium"
-        >
+        <button onClick={() => navigate(-1)} className="text-red-500 font-medium">
           Cancel
         </button>
       </div>
@@ -68,8 +95,8 @@ const BuyBPCPayment = () => {
           <p className="text-gray-500 text-sm">Amount</p>
           <div className="flex justify-between items-center">
             <p className="text-2xl font-bold">NGN 6200</p>
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
               onClick={() => handleCopy("6200", "Amount")}
             >
@@ -83,8 +110,8 @@ const BuyBPCPayment = () => {
           <p className="text-gray-500 text-sm">Account Number</p>
           <div className="flex justify-between items-center">
             <p className="text-2xl font-bold">1035319866</p>
-            <Button 
-              variant="default" 
+            <Button
+              variant="default"
               className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
               onClick={() => handleCopy("1035319866", "Account Number")}
             >
@@ -96,7 +123,7 @@ const BuyBPCPayment = () => {
 
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Bank Name</p>
-          <p className="text-2xl font-bold">CARBON </p>
+          <p className="text-2xl font-bold">CARBON</p>
         </div>
 
         <div className="mb-4 border-t pt-4">
@@ -110,7 +137,7 @@ const BuyBPCPayment = () => {
       </p>
 
       <div className="px-5 mb-8">
-        <Button 
+        <Button
           className="bg-blue-600 hover:bg-blue-700 w-full py-6 text-lg font-semibold"
           onClick={handlePaymentConfirm}
         >
