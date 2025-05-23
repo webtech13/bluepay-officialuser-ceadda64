@@ -8,10 +8,6 @@ const BuyBPCPayment = () => {
   const navigate = useNavigate();
   const [showOpayAlert, setShowOpayAlert] = useState(true);
 
-  useEffect(() => {
-    setShowOpayAlert(true); // Show modal on page load
-  }, []);
-
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text).then(() => {
       toast({
@@ -26,19 +22,24 @@ const BuyBPCPayment = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-gray-100 relative">
+      {/* OPay Alert Popup */}
       {showOpayAlert && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md text-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full mx-4 text-center">
             <div className="flex flex-col items-center">
-              <div className="text-green-500 text-5xl mb-4">⏺️</div>
+              <img
+                src="https://i.ibb.co/qLVCfHVK/icon.jpg"
+                alt="Opay Logo"
+                className="w-12 h-12 mb-3"
+              />
               <h2 className="text-red-600 text-xl font-bold mb-2">
                 Opay Service Down
               </h2>
               <p className="text-gray-700 mb-2">
                 Please do not use Opay bank for payments at this time.
               </p>
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm">
                 The Opay bank service is currently experiencing issues. Please
                 use other supported banks for your payment.
               </div>
@@ -70,7 +71,10 @@ const BuyBPCPayment = () => {
           </button>
           <h2 className="text-xl font-bold">Bank Transfer</h2>
         </div>
-        <button onClick={() => navigate(-1)} className="text-red-500 font-medium">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-red-500 font-medium"
+        >
           Cancel
         </button>
       </div>
@@ -81,7 +85,9 @@ const BuyBPCPayment = () => {
       </div>
 
       <div className="bg-blue-50 mx-5 p-5 rounded-lg">
-        <h3 className="text-blue-700 text-lg font-semibold mb-2">Instructions:</h3>
+        <h3 className="text-blue-700 text-lg font-semibold mb-2">
+          Instructions:
+        </h3>
         <ol className="list-decimal pl-5 text-blue-700 space-y-3">
           <li>Copy the account details below</li>
           <li>Open your bank app and make a transfer</li>
