@@ -1,44 +1,58 @@
 
 import React from "react";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Transaction } from "../../types/transaction";
+import { MessageCircle, CreditCard, PlayCircle, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-interface RecentTransactionsProps {
-  transactions: Transaction[];
-}
+const QuickActions = () => {
+  const navigate = useNavigate();
+  
+  const handleWatch = () => {
+    window.open("https://t.me/officialbluepay2025", "_blank");
+  };
 
-const RecentTransactions = ({ transactions }: RecentTransactionsProps) => {
   return (
-    <div className="bg-white rounded-xl p-4 shadow-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="font-medium">Recent Transactions</h3>
-        <Button variant="ghost" className="h-8 px-2 text-bluepay-blue">
-          View All <ArrowRight size={16} />
-        </Button>
-      </div>
-      
-      <div className="space-y-3">
-        {transactions.slice(0, 5).map(transaction => (
-          <div key={transaction.id} className="flex justify-between py-2 border-b border-gray-100">
-            <div>
-              <p className="font-medium">{transaction.type}</p>
-              <p className="text-xs text-gray-500">{transaction.date}</p>
-              {transaction.recipient && (
-                <p className="text-xs text-gray-500">{transaction.recipient}</p>
-              )}
-            </div>
-            <div className="text-right">
-              <p className="font-semibold">{transaction.amount}</p>
-              <p className={`text-xs ${transaction.status === "Completed" ? "text-green-500" : "text-orange-500"}`}>
-                {transaction.status}
-              </p>
-            </div>
+    <div className="bg-white rounded-xl p-5 mb-6 shadow-sm">
+      <h3 className="font-semibold text-lg mb-5">Quick Actions</h3>
+      <div className="grid grid-cols-4 gap-6">
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/platform")}
+        >
+          <div className="h-14 w-14 bg-blue-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <MessageCircle className="h-7 w-7 text-blue-600" />
           </div>
-        ))}
+          <p className="text-xs font-medium">Platform</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
+          onClick={() => navigate("/buy-bpc")}
+        >
+          <div className="h-14 w-14 bg-green-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <CreditCard className="h-7 w-7 text-green-600" />
+          </div>
+          <p className="text-xs font-medium">Buy BPC</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={handleWatch}
+        >
+          <div className="h-14 w-14 bg-purple-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <PlayCircle className="h-7 w-7 text-purple-600" />
+          </div>
+          <p className="text-xs font-medium">Watch</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/airtime")}
+        >
+          <div className="h-14 w-14 bg-orange-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <Phone className="h-7 w-7 text-orange-600" />
+          </div>
+          <p className="text-xs font-medium">Airtime</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default RecentTransactions;
+export default QuickActions;
