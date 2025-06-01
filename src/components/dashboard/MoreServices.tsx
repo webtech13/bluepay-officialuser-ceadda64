@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BarChart2, HelpCircle, MessageSquare, User } from "lucide-react";
+import { BarChart2, HelpCircle, MessageSquare, User, History, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const MoreServices = () => {
@@ -9,7 +9,7 @@ const MoreServices = () => {
   return (
     <div className="bg-white rounded-xl p-5 mb-6 shadow-sm">
       <h3 className="font-semibold text-lg mb-5">More Services</h3>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-3 gap-6">
         <div 
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={() => navigate("/data")}
@@ -45,6 +45,24 @@ const MoreServices = () => {
             <User className="h-7 w-7 text-rose-600" />
           </div>
           <p className="text-xs font-medium">Profile</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/transaction-history")}
+        >
+          <div className="h-14 w-14 bg-teal-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <History className="h-7 w-7 text-teal-600" />
+          </div>
+          <p className="text-xs font-medium">Transaction History</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/withdraw")}
+        >
+          <div className="h-14 w-14 bg-red-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
+            <ArrowUpRight className="h-7 w-7 text-red-600" />
+          </div>
+          <p className="text-xs font-medium">Withdraw</p>
         </div>
       </div>
     </div>
