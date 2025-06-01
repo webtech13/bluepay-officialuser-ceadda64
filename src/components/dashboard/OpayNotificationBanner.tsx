@@ -24,15 +24,13 @@ const OpayNotificationBanner = () => {
     <div className="bg-orange-500 text-white overflow-hidden relative">
       <div className="flex items-center py-3 px-5">
         <AlertTriangle className="h-5 w-5 mr-3 flex-shrink-0" />
-        <div className="flex-1 text-sm font-medium min-h-[20px] overflow-hidden">
+        <div className="flex-1 text-sm font-medium min-h-[20px]">
           {showTypewriter ? (
-            <div className="animate-marquee whitespace-nowrap">
-              <TypewriterText 
-                text={notificationText}
-                speed={50}
-                className="text-white font-medium inline-block"
-              />
-            </div>
+            <TypewriterText 
+              text={notificationText}
+              speed={50}
+              className="text-white font-medium"
+            />
           ) : (
             <span></span>
           )}
@@ -46,21 +44,6 @@ const OpayNotificationBanner = () => {
           <X className="h-4 w-4" />
         </Button>
       </div>
-      
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-        
-        .animate-marquee {
-          animation: marquee 15s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };
