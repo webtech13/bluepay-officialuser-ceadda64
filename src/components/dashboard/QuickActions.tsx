@@ -21,7 +21,7 @@ const QuickActions = () => {
           <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
             <CreditCard className="h-8 w-8 text-yellow-600" />
           </div>
-          <p className="text-xs font-medium text-center">Buy PAY ID</p>
+          <p className="text-xs font-medium text-center">Buy BPC</p>
         </div>
         <div 
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
