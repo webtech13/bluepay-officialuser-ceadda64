@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CreditCard, PlayCircle, Phone, BarChart2 } from "lucide-react";
+import { CreditCard, Tv, Phone, BarChart2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const QuickActions = () => {
@@ -18,8 +18,8 @@ const QuickActions = () => {
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
           onClick={() => navigate("/buy-bpc")}
         >
-          <div className="h-14 w-14 bg-purple-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <CreditCard className="h-8 w-8 text-purple-600" />
+          <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <CreditCard className="h-8 w-8 text-yellow-600" />
           </div>
           <p className="text-xs font-medium text-center">Buy PAY ID</p>
         </div>
@@ -28,7 +28,7 @@ const QuickActions = () => {
           onClick={handleWatch}
         >
           <div className="h-14 w-14 bg-blue-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <PlayCircle className="h-8 w-8 text-blue-600" />
+            <Tv className="h-8 w-8 text-blue-600" />
           </div>
           <p className="text-xs font-medium text-center">Watch</p>
         </div>
@@ -36,8 +36,8 @@ const QuickActions = () => {
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={() => navigate("/airtime")}
         >
-          <div className="h-14 w-14 bg-cyan-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <Phone className="h-8 w-8 text-cyan-600" />
+          <div className="h-14 w-14 bg-green-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <Phone className="h-8 w-8 text-green-600" />
           </div>
           <p className="text-xs font-medium text-center">Airtime</p>
         </div>
@@ -45,8 +45,8 @@ const QuickActions = () => {
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={() => navigate("/data")}
         >
-          <div className="h-14 w-14 bg-blue-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <BarChart2 className="h-8 w-8 text-blue-600" />
+          <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <BarChart2 className="h-8 w-8 text-gray-600" />
           </div>
           <p className="text-xs font-medium text-center">Data</p>
         </div>

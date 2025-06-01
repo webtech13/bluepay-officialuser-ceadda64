@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Headphones, Globe, TrendingUp, User } from "lucide-react";
+import { Headphones, Globe, DollarSign, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const MoreServices = () => {
@@ -33,7 +33,7 @@ const MoreServices = () => {
           onClick={() => navigate("/earn-more")}
         >
           <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <TrendingUp className="h-8 w-8 text-yellow-600" />
+            <DollarSign className="h-8 w-8 text-yellow-600" />
           </div>
           <p className="text-xs font-medium text-center">Earn More</p>
         </div>
