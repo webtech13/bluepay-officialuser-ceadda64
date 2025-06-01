@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
+import TypewriterText from "../ui/TypewriterText";
 
 const ImportantInformation = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -12,10 +13,16 @@ const ImportantInformation = () => {
     'Use code for airtime & withdrawals'
   ];
 
+  const [currentStepText, setCurrentStepText] = useState(steps[0]);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, 3000); // Change step every 3 seconds
+      setCurrentStep((prev) => {
+        const nextStep = (prev + 1) % steps.length;
+        setCurrentStepText(steps[nextStep]);
+        return nextStep;
+      });
+    }, 4000); // Change step every 4 seconds to allow for typewriter effect
 
     return () => clearInterval(interval);
   }, [steps.length]);
@@ -47,7 +54,15 @@ const ImportantInformation = () => {
               <p className={`text-sm transition-all duration-500 ${
                 index === currentStep ? 'font-semibold text-yellow-100' : 'text-white/90'
               }`}>
-                {step}
+                {index === currentStep ? (
+                  <TypewriterText 
+                    text={currentStepText} 
+                    speed={80}
+                    className="text-yellow-100"
+                  />
+                ) : (
+                  step
+                )}
               </p>
             </div>
           ))}

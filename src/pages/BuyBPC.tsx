@@ -6,14 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUserStore } from "../stores/userStore";
 import { toast } from "@/hooks/use-toast";
+import TypewriterText from "../components/ui/TypewriterText";
 
 const BuyBPC = () => {
   const navigate = useNavigate();
   const { userData } = useUserStore();
-  const [amount] = useState("₦6,200"); // Made non-editable by removing setter
+  const [amount] = useState("₦6,200");
   const [fullName, setFullName] = useState(userData?.fullName || "");
   const [email, setEmail] = useState(userData?.email || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showTypewriter, setShowTypewriter] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,8 +29,6 @@ const BuyBPC = () => {
     }
     
     setIsSubmitting(true);
-    
-    // Navigate to processing page first
     navigate("/buy-bpc/processing");
   };
 
@@ -37,6 +37,17 @@ const BuyBPC = () => {
       <header className="bg-[#1a237e] text-white py-5 px-5">
         <h1 className="text-2xl font-bold">Buy BPC Code</h1>
       </header>
+
+      {showTypewriter && userData && (
+        <div className="bg-blue-50 p-4 border-l-4 border-blue-500 mx-6 mt-4 rounded">
+          <p className="text-blue-800">
+            Welcome back, <TypewriterText text={userData.fullName || "User"} speed={100} className="font-semibold" />
+          </p>
+          <p className="text-blue-600 text-sm mt-1">
+            Email: <TypewriterText text={userData.email || ""} speed={80} className="font-medium" />
+          </p>
+        </div>
+      )}
 
       <div className="flex-1 p-6">
         <form onSubmit={handleSubmit} className="space-y-8">

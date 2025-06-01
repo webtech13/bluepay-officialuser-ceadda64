@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BarChart2, HelpCircle, MessageSquare, User, History, ArrowUpRight } from "lucide-react";
+import { Headphones, Globe, TrendingUp, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const MoreServices = () => {
@@ -9,60 +9,42 @@ const MoreServices = () => {
   return (
     <div className="bg-white rounded-xl p-5 mb-6 shadow-sm">
       <h3 className="font-semibold text-lg mb-5">More Services</h3>
-      <div className="grid grid-cols-3 gap-6">
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/data")}
-        >
-          <div className="h-14 w-14 bg-cyan-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <BarChart2 className="h-7 w-7 text-cyan-600" />
-          </div>
-          <p className="text-xs font-medium">Data</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/faq")}
-        >
-          <div className="h-14 w-14 bg-amber-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <HelpCircle className="h-7 w-7 text-amber-600" />
-          </div>
-          <p className="text-xs font-medium">FAQ</p>
-        </div>
+      <div className="grid grid-cols-4 gap-4">
         <div 
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
           onClick={() => navigate("/support")}
         >
-          <div className="h-14 w-14 bg-indigo-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <MessageSquare className="h-7 w-7 text-indigo-600" />
+          <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <Headphones className="h-8 w-8 text-gray-600" />
           </div>
-          <p className="text-xs font-medium">Support</p>
+          <p className="text-xs font-medium text-center">Support</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/platform")}
+        >
+          <div className="h-14 w-14 bg-blue-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <Globe className="h-8 w-8 text-blue-600" />
+          </div>
+          <p className="text-xs font-medium text-center">Group</p>
+        </div>
+        <div 
+          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
+          onClick={() => navigate("/earn-more")}
+        >
+          <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <TrendingUp className="h-8 w-8 text-yellow-600" />
+          </div>
+          <p className="text-xs font-medium text-center">Earn More</p>
         </div>
         <div 
           className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
           onClick={() => navigate("/profile")}
         >
-          <div className="h-14 w-14 bg-rose-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <User className="h-7 w-7 text-rose-600" />
+          <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
+            <User className="h-8 w-8 text-gray-600" />
           </div>
-          <p className="text-xs font-medium">Profile</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/transaction-history")}
-        >
-          <div className="h-14 w-14 bg-teal-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <History className="h-7 w-7 text-teal-600" />
-          </div>
-          <p className="text-xs font-medium">Transaction History</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/withdraw")}
-        >
-          <div className="h-14 w-14 bg-red-100 rounded-full mb-3 flex items-center justify-center shadow-sm">
-            <ArrowUpRight className="h-7 w-7 text-red-600" />
-          </div>
-          <p className="text-xs font-medium">Withdraw</p>
+          <p className="text-xs font-medium text-center">Profile</p>
         </div>
       </div>
     </div>
