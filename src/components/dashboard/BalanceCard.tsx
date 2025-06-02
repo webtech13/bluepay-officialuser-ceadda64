@@ -1,7 +1,7 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { History } from "lucide-react";
 
 interface BalanceCardProps {
   balance: number;
@@ -15,21 +15,12 @@ const BalanceCard = ({ balance }: BalanceCardProps) => {
       <p className="text-lg mb-2">Available Balance</p>
       <div className="flex justify-between items-center">
         <h3 className="text-4xl font-bold">₦{balance.toLocaleString()}</h3>
-        <div className="flex gap-2">
-          <Button 
-            className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold flex items-center gap-2"
-            onClick={() => navigate("/transaction-history")}
-          >
-            <History size={16} />
-            History
-          </Button>
-          <Button 
-            className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold"
-            onClick={() => navigate("/withdraw")}
-          >
-            Withdraw
-          </Button>
-        </div>
+        <Button 
+          className="bg-white text-bluepay-blue hover:bg-gray-100 font-semibold"
+          onClick={() => navigate("/withdraw")}
+        >
+          Withdraw
+        </Button>
       </div>
       <div className="mt-4 bg-white/10 rounded-lg p-3">
         <div className="flex justify-between items-center">
