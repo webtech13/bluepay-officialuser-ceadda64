@@ -1,6 +1,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ShoppingCart, Play, Smartphone, Wifi } from "lucide-react";
 
 const QuickActions = () => {
   const navigate = useNavigate();
@@ -9,78 +10,60 @@ const QuickActions = () => {
     window.open("https://t.me/officialbluepay2025", "_blank");
   };
 
+  const quickActions = [
+    {
+      id: 'buy-bpc',
+      title: 'Buy PAY ID',
+      icon: ShoppingCart,
+      bgColor: 'bg-gradient-to-br from-yellow-400 to-orange-500',
+      iconColor: 'text-white',
+      onClick: () => navigate("/buy-bpc")
+    },
+    {
+      id: 'watch',
+      title: 'Watch',
+      icon: Play,
+      bgColor: 'bg-gradient-to-br from-blue-500 to-purple-600',
+      iconColor: 'text-white',
+      onClick: handleWatch
+    },
+    {
+      id: 'airtime',
+      title: 'Airtime',
+      icon: Smartphone,
+      bgColor: 'bg-gradient-to-br from-green-500 to-emerald-600',
+      iconColor: 'text-white',
+      onClick: () => navigate("/airtime")
+    },
+    {
+      id: 'data',
+      title: 'Data',
+      icon: Wifi,
+      bgColor: 'bg-gradient-to-br from-indigo-500 to-blue-600',
+      iconColor: 'text-white',
+      onClick: () => navigate("/data")
+    }
+  ];
+
   return (
-    <div className="bg-white rounded-xl p-5 mb-6 shadow-sm">
-      <h3 className="font-semibold text-lg mb-5">Quick Actions</h3>
-      <div className="grid grid-cols-4 gap-4">
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
-          onClick={() => navigate("/buy-bpc")}
-        >
-          <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img 
-              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
-              alt="Buy PAY ID" 
-              className="h-8 w-8 object-cover rounded-md"
-              style={{
-                objectPosition: '0% 0%',
-                clipPath: 'inset(0 75% 50% 0)'
-              }}
-            />
-          </div>
-          <p className="text-xs font-medium text-center">Buy PAY ID</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={handleWatch}
-        >
-          <div className="h-14 w-14 bg-blue-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img 
-              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
-              alt="Watch" 
-              className="h-8 w-8 object-cover rounded-md"
-              style={{
-                objectPosition: '25% 0%',
-                clipPath: 'inset(0 50% 50% 25%)'
-              }}
-            />
-          </div>
-          <p className="text-xs font-medium text-center">Watch</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/airtime")}
-        >
-          <div className="h-14 w-14 bg-green-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img 
-              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
-              alt="Airtime" 
-              className="h-8 w-8 object-cover rounded-md"
-              style={{
-                objectPosition: '50% 0%',
-                clipPath: 'inset(0 25% 50% 50%)'
-              }}
-            />
-          </div>
-          <p className="text-xs font-medium text-center">Airtime</p>
-        </div>
-        <div 
-          className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200"
-          onClick={() => navigate("/data")}
-        >
-          <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img 
-              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
-              alt="Data" 
-              className="h-8 w-8 object-cover rounded-md"
-              style={{
-                objectPosition: '75% 0%',
-                clipPath: 'inset(0 0 50% 75%)'
-              }}
-            />
-          </div>
-          <p className="text-xs font-medium text-center">Data</p>
-        </div>
+    <div className="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-gray-100">
+      <h3 className="font-bold text-xl mb-6 text-gray-800">Quick Actions</h3>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+        {quickActions.map((action) => {
+          const IconComponent = action.icon;
+          return (
+            <div 
+              key={action.id}
+              className="flex flex-col items-center cursor-pointer group"
+              onClick={action.onClick}
+            >
+              <div className={`h-16 w-16 ${action.bgColor} rounded-2xl mb-3 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 ease-out`}>
+                <IconComponent className={`h-8 w-8 ${action.iconColor}`} />
+              </div>
+              <p className="text-sm font-semibold text-center text-gray-700 group-hover:text-gray-900 transition-colors">{action.title}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
