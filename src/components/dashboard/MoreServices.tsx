@@ -14,7 +14,15 @@ const MoreServices = () => {
           onClick={() => navigate("/support")}
         >
           <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" alt="Support" className="h-8 w-8 object-contain" style={{clipPath: 'inset(50% 75% 0 0)'}} />
+            <img 
+              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
+              alt="Support" 
+              className="h-8 w-8 object-cover rounded-md"
+              style={{
+                objectPosition: '0% 50%',
+                clipPath: 'inset(50% 75% 0 0)'
+              }}
+            />
           </div>
           <p className="text-xs font-medium text-center">Support</p>
         </div>
@@ -23,7 +31,15 @@ const MoreServices = () => {
           onClick={() => navigate("/platform")}
         >
           <div className="h-14 w-14 bg-blue-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" alt="Group" className="h-8 w-8 object-contain" style={{clipPath: 'inset(50% 50% 0 25%)'}} />
+            <img 
+              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
+              alt="Group" 
+              className="h-8 w-8 object-cover rounded-md"
+              style={{
+                objectPosition: '25% 50%',
+                clipPath: 'inset(50% 50% 0 25%)'
+              }}
+            />
           </div>
           <p className="text-xs font-medium text-center">Group</p>
         </div>
@@ -32,7 +48,15 @@ const MoreServices = () => {
           onClick={() => navigate("/earn-more")}
         >
           <div className="h-14 w-14 bg-yellow-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" alt="Earn More" className="h-8 w-8 object-contain" style={{clipPath: 'inset(50% 25% 0 50%)'}} />
+            <img 
+              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
+              alt="Earn More" 
+              className="h-8 w-8 object-cover rounded-md"
+              style={{
+                objectPosition: '50% 50%',
+                clipPath: 'inset(50% 25% 0 50%)'
+              }}
+            />
           </div>
           <p className="text-xs font-medium text-center">Earn More</p>
         </div>
@@ -41,7 +65,15 @@ const MoreServices = () => {
           onClick={() => navigate("/profile")}
         >
           <div className="h-14 w-14 bg-gray-100 rounded-xl mb-3 flex items-center justify-center shadow-sm">
-            <img src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" alt="Profile" className="h-8 w-8 object-contain" style={{clipPath: 'inset(50% 0 0 75%)'}} />
+            <img 
+              src="/lovable-uploads/94f3ae56-131e-4f5a-916e-05aede9026cb.png" 
+              alt="Profile" 
+              className="h-8 w-8 object-cover rounded-md"
+              style={{
+                objectPosition: '75% 50%',
+                clipPath: 'inset(50% 0 0 75%)'
+              }}
+            />
           </div>
           <p className="text-xs font-medium text-center">Profile</p>
         </div>
