@@ -46,8 +46,8 @@ const QuickActions = () => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 mb-6 shadow-sm">
-      <div className="grid grid-cols-4 gap-4">
+    <div className="bg-white rounded-2xl p-4 mb-4 shadow-sm">
+      <div className="grid grid-cols-4 gap-3">
         {quickActions.map((action) => {
           const IconComponent = action.icon;
           return (
@@ -56,10 +56,10 @@ const QuickActions = () => {
               className="flex flex-col items-center cursor-pointer"
               onClick={action.onClick}
             >
-              <div className={`h-16 w-16 ${action.bgColor} rounded-2xl mb-3 flex items-center justify-center`}>
-                <IconComponent className={`h-7 w-7 ${action.iconColor}`} />
+              <div className={`h-12 w-12 ${action.bgColor} rounded-xl mb-2 flex items-center justify-center`}>
+                <IconComponent className={`h-5 w-5 ${action.iconColor}`} />
               </div>
-              <p className="text-sm font-medium text-center text-gray-800">{action.title}</p>
+              <p className="text-xs font-medium text-center text-gray-800">{action.title}</p>
             </div>
           );
         })}

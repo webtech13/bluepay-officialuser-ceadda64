@@ -21,7 +21,7 @@ const Dashboard = () => {
       <OpayNotificationBanner />
       <Header />
 
-      <div className="p-5">
+      <div className="p-3 space-y-3">
         <UserGreeting userData={userData} />
         <BalanceCard balance={balance} />
         <QuickActions />
