@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 
@@ -55,9 +54,9 @@ const WithdrawalNotifications = () => {
     "Chukwuebuka", "Oluwayemisi", "Abdulkabir", "Gloria", "Nnameka", "Tolulope", "Farouq", "Princess", "Ikechukwu", "Omotola"
   ];
 
-  // Generate random withdrawal amounts
+  // Generate random withdrawal amounts (max 200k)
   const getRandomAmount = () => {
-    const amounts = ['50k', '75k', '100k', '120k', '150k', '180k', '190k', '200k', '250k', '300k', '350k', '400k', '450k', '500k'];
+    const amounts = ['50k', '75k', '100k', '120k', '150k', '180k', '190k', '200k'];
     return amounts[Math.floor(Math.random() * amounts.length)];
   };
 
