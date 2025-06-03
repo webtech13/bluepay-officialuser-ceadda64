@@ -45,7 +45,7 @@ const AirtimePurchase = () => {
     }
 
     // Validate BPC code
-    if (bpcCode !== "BPC11666") {
+    if (bpcCode !== "BPC7319111") {
       toast({
         variant: "destructive",
         description: "Invalid BPC code. Please enter a valid code.",
