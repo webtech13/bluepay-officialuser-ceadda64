@@ -10,12 +10,14 @@ import RecentTransactions from "../components/dashboard/RecentTransactions";
 import BottomNavigation from "../components/dashboard/BottomNavigation";
 import OpayNotificationBanner from "../components/dashboard/OpayNotificationBanner";
 import ImportantInformation from "../components/dashboard/ImportantInformation";
+import WithdrawalNotifications from "../components/dashboard/WithdrawalNotifications";
 
 const Dashboard = () => {
   const { userData, balance, transactions } = useUserStore();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100 pb-16">
+    <div className="min-h-screen flex flex-col bg-gray-100 pb-16 relative">
+      <WithdrawalNotifications />
       <OpayNotificationBanner />
       <Header />
 
