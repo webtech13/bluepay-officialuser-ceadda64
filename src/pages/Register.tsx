@@ -1,18 +1,35 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useUserStore } from "../stores/userStore";
+import { useToast } from "@/hooks/use-toast";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const { setUserData } = useUserStore();
+  const [searchParams] = useSearchParams();
+  const [referralCode, setReferralCode] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    // Check for referral code in URL parameters
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setReferralCode(refCode);
+      toast({
+        title: "Referral Code Applied!",
+        description: `Using referral code: ${refCode}. You'll get ₦500 bonus after registration!`,
+      });
+    }
+  }, [searchParams, toast]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,6 +43,15 @@ const Register = () => {
       fullName: formData.fullName,
       email: formData.email
     });
+    
+    // Show referral bonus if code was used
+    if (referralCode) {
+      toast({
+        title: "Registration Successful!",
+        description: `Welcome! Your ₦500 referral bonus will be credited after PIN setup.`,
+      });
+    }
+    
     navigate("/setup-pin");
   };
 
@@ -48,6 +74,16 @@ const Register = () => {
         <div className="max-w-md w-full mx-auto">
           <h1 className="text-3xl font-bold mb-2 text-white text-center">BLUEPAY</h1>
           <h2 className="text-2xl font-bold mb-4 text-white">Welcome!</h2>
+          
+          {referralCode && (
+            <div className="bg-green-500/20 border border-green-400 rounded-lg p-3 mb-4">
+              <p className="text-green-100 text-sm">
+                🎉 Using referral code: <span className="font-bold">{referralCode}</span>
+              </p>
+              <p className="text-green-100 text-xs">You'll get ₦500 bonus after registration!</p>
+            </div>
+          )}
+          
           <p className="text-gray-100 mb-6">
             Get your account ready and instantly start buying, selling airtime and data online and start paying all your bills in cheaper price.
           </p>

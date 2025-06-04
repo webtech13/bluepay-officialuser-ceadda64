@@ -16,6 +16,14 @@ const EarnMore = () => {
     setShowReferralDetails(true);
   };
 
+  const generateReferralLink = () => {
+    return `${window.location.origin}/register?ref=${referralCode}`;
+  };
+
+  const generateReferralMessage = () => {
+    return `🎉 Join BluePay and get ₦500 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nDownload now: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
+  };
+
   const copyReferralCode = () => {
     navigator.clipboard.writeText(referralCode);
     toast({
@@ -24,20 +32,34 @@ const EarnMore = () => {
     });
   };
 
+  const copyReferralLink = () => {
+    navigator.clipboard.writeText(generateReferralLink());
+    toast({
+      title: "Link Copied!",
+      description: "Referral link copied to clipboard",
+    });
+  };
+
+  const copyReferralMessage = () => {
+    navigator.clipboard.writeText(generateReferralMessage());
+    toast({
+      title: "Message Copied!",
+      description: "Full referral message copied to clipboard",
+    });
+  };
+
   const shareReferralLink = () => {
-    const referralLink = `https://bluepay.app/register?ref=${referralCode}`;
+    const referralLink = generateReferralLink();
+    const referralMessage = generateReferralMessage();
+    
     if (navigator.share) {
       navigator.share({
         title: 'Join BluePay and Earn!',
-        text: `Use my referral code ${referralCode} and get ₦500 bonus when you join BluePay!`,
+        text: referralMessage,
         url: referralLink,
       });
     } else {
-      navigator.clipboard.writeText(referralLink);
-      toast({
-        title: "Link Copied!",
-        description: "Referral link copied to clipboard",
-      });
+      copyReferralMessage();
     }
   };
 
@@ -99,6 +121,32 @@ const EarnMore = () => {
                     </Button>
                   </div>
                 </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-800 mb-2">Your Referral Link</h4>
+                  <div className="flex items-center gap-2 p-3 bg-white rounded border">
+                    <span className="text-sm flex-1 break-all">{generateReferralLink()}</span>
+                    <Button size="sm" variant="outline" onClick={copyReferralLink}>
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="bg-purple-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-purple-800 mb-2">Ready-to-Share Message</h4>
+                  <div className="p-3 bg-white rounded border text-sm">
+                    <p className="whitespace-pre-line">{generateReferralMessage()}</p>
+                  </div>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="mt-2 w-full"
+                    onClick={copyReferralMessage}
+                  >
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy Message
+                  </Button>
+                </div>
                 
                 <div className="grid grid-cols-2 gap-3">
                   <Button 
@@ -107,7 +155,7 @@ const EarnMore = () => {
                     onClick={shareReferralLink}
                   >
                     <Share2 className="h-4 w-4" />
-                    Share Link
+                    Share All
                   </Button>
                   <Button 
                     variant="outline"
@@ -124,10 +172,10 @@ const EarnMore = () => {
                     <div>
                       <h5 className="font-semibold text-blue-800">How it works:</h5>
                       <ul className="text-sm text-blue-700 mt-1 space-y-1">
-                        <li>• Share your referral code with friends</li>
-                        <li>• They sign up using your code</li>
-                        <li>• You both get ₦500 bonus!</li>
-                        <li>• No limit on referrals</li>
+                        <li>• Share any of the above content with friends</li>
+                        <li>• They click the link or use your code to register</li>
+                        <li>• You both get ₦500 bonus instantly!</li>
+                        <li>• No limit on referrals - keep earning!</li>
                       </ul>
                     </div>
                   </div>
