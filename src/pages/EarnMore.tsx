@@ -21,7 +21,7 @@ const EarnMore = () => {
   };
 
   const generateReferralMessage = () => {
-    return `🎉 Join BluePay and get ₦500 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nDownload now: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
+    return `🎉 Join BluePay and get ₦20,000 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nDownload now: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
   };
 
   const copyReferralCode = () => {
@@ -99,7 +99,7 @@ const EarnMore = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Referral Program</h3>
-                <p className="text-sm text-gray-600">Earn ₦500 for each friend you refer</p>
+                <p className="text-sm text-gray-600">Earn ₦20,000 for each friend you refer</p>
               </div>
             </div>
             
@@ -174,7 +174,7 @@ const EarnMore = () => {
                       <ul className="text-sm text-blue-700 mt-1 space-y-1">
                         <li>• Share any of the above content with friends</li>
                         <li>• They click the link or use your code to register</li>
-                        <li>• You both get ₦500 bonus instantly!</li>
+                        <li>• You both get ₦20,000 bonus instantly!</li>
                         <li>• No limit on referrals - keep earning!</li>
                       </ul>
                     </div>

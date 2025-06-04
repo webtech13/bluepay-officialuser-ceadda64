@@ -26,7 +26,7 @@ const Register = () => {
       setReferralCode(refCode);
       toast({
         title: "Referral Code Applied!",
-        description: `Using referral code: ${refCode}. You'll get ₦500 bonus after registration!`,
+        description: `Using referral code: ${refCode}. You'll get ₦20,000 bonus after registration!`,
       });
     }
   }, [searchParams, toast]);
@@ -48,7 +48,7 @@ const Register = () => {
     if (referralCode) {
       toast({
         title: "Registration Successful!",
-        description: `Welcome! Your ₦500 referral bonus will be credited after PIN setup.`,
+        description: `Welcome! Your ₦20,000 referral bonus will be credited after PIN setup.`,
       });
     }
     
@@ -80,7 +80,7 @@ const Register = () => {
               <p className="text-green-100 text-sm">
                 🎉 Using referral code: <span className="font-bold">{referralCode}</span>
               </p>
-              <p className="text-green-100 text-xs">You'll get ₦500 bonus after registration!</p>
+              <p className="text-green-100 text-xs">You'll get ₦20,000 bonus after registration!</p>
             </div>
           )}
           
