@@ -16,9 +16,7 @@ const EarnMore = () => {
   };
 
   const generateReferralLink = () => {
-    // Use the current origin to ensure the link works properly
-    const baseUrl = window.location.origin;
-    return `${baseUrl}/register?ref=${referralCode}`;
+    return `https://bluepay2025.netlify.app/register?ref=${referralCode}`;
   };
 
   const generateReferralMessage = () => {
