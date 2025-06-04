@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ArrowLeft, TrendingUp, DollarSign, Gift, Users, Copy, Share2, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -17,11 +16,13 @@ const EarnMore = () => {
   };
 
   const generateReferralLink = () => {
-    return `${window.location.origin}/register?ref=${referralCode}`;
+    // Use the current origin to ensure the link works properly
+    const baseUrl = window.location.origin;
+    return `${baseUrl}/register?ref=${referralCode}`;
   };
 
   const generateReferralMessage = () => {
-    return `🎉 Join BluePay and get ₦20,000 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nDownload now: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
+    return `🎉 Join BluePay and get ₦20,000 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nRegister here: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
   };
 
   const copyReferralCode = () => {
