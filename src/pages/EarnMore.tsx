@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { ArrowLeft, TrendingUp, DollarSign, Gift, Users, Copy, Share2, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -15,14 +16,19 @@ const EarnMore = () => {
     setShowReferralDetails(true);
   };
 
-  const generateReferralLink = () => {
-    // Use the current origin to ensure the link works properly
-    const baseUrl = window.location.origin;
-    return `${baseUrl}/register?ref=${referralCode}`;
+  // Multiple BluePay application links
+  const generateReferralLinks = () => {
+    const bluepayDomain = "https://bluepay.lovable.app"; // Main BluePay application domain
+    return [
+      `${bluepayDomain}/register?ref=${referralCode}`,
+      `${bluepayDomain}/?ref=${referralCode}`,
+      `${bluepayDomain}/register/${referralCode}`,
+    ];
   };
 
-  const generateReferralMessage = () => {
-    return `🎉 Join BluePay and get ₦20,000 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nRegister here: ${generateReferralLink()}\n\n#BluePay #EarnMoney #Referral`;
+  const generateReferralMessage = (linkIndex = 0) => {
+    const links = generateReferralLinks();
+    return `🎉 Join BluePay and get ₦20,000 bonus! 💰\n\nUse my referral code: ${referralCode}\n\nRegister here: ${links[linkIndex]}\n\n#BluePay #EarnMoney #Referral`;
   };
 
   const copyReferralCode = () => {
@@ -33,34 +39,35 @@ const EarnMore = () => {
     });
   };
 
-  const copyReferralLink = () => {
-    navigator.clipboard.writeText(generateReferralLink());
+  const copyReferralLink = (linkIndex = 0) => {
+    const links = generateReferralLinks();
+    navigator.clipboard.writeText(links[linkIndex]);
     toast({
       title: "Link Copied!",
       description: "Referral link copied to clipboard",
     });
   };
 
-  const copyReferralMessage = () => {
-    navigator.clipboard.writeText(generateReferralMessage());
+  const copyReferralMessage = (linkIndex = 0) => {
+    navigator.clipboard.writeText(generateReferralMessage(linkIndex));
     toast({
       title: "Message Copied!",
       description: "Full referral message copied to clipboard",
     });
   };
 
-  const shareReferralLink = () => {
-    const referralLink = generateReferralLink();
-    const referralMessage = generateReferralMessage();
+  const shareReferralLink = (linkIndex = 0) => {
+    const referralMessage = generateReferralMessage(linkIndex);
+    const links = generateReferralLinks();
     
     if (navigator.share) {
       navigator.share({
         title: 'Join BluePay and Earn!',
         text: referralMessage,
-        url: referralLink,
+        url: links[linkIndex],
       });
     } else {
-      copyReferralMessage();
+      copyReferralMessage(linkIndex);
     }
   };
 
@@ -124,46 +131,52 @@ const EarnMore = () => {
                 </div>
 
                 <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-blue-800 mb-2">Your Referral Link</h4>
-                  <div className="flex items-center gap-2 p-3 bg-white rounded border">
-                    <span className="text-sm flex-1 break-all">{generateReferralLink()}</span>
-                    <Button size="sm" variant="outline" onClick={copyReferralLink}>
-                      <Copy className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <h4 className="font-semibold text-blue-800 mb-2">Your BluePay Referral Links</h4>
+                  {generateReferralLinks().map((link, index) => (
+                    <div key={index} className="flex items-center gap-2 p-3 bg-white rounded border mb-2">
+                      <span className="text-sm flex-1 break-all">{link}</span>
+                      <Button size="sm" variant="outline" onClick={() => copyReferralLink(index)}>
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="bg-purple-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-purple-800 mb-2">Ready-to-Share Message</h4>
-                  <div className="p-3 bg-white rounded border text-sm">
-                    <p className="whitespace-pre-line">{generateReferralMessage()}</p>
-                  </div>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="mt-2 w-full"
-                    onClick={copyReferralMessage}
-                  >
-                    <Copy className="h-4 w-4 mr-2" />
-                    Copy Message
-                  </Button>
+                  <h4 className="font-semibold text-purple-800 mb-2">Ready-to-Share Messages</h4>
+                  {generateReferralLinks().map((link, index) => (
+                    <div key={index} className="mb-3">
+                      <div className="p-3 bg-white rounded border text-sm mb-2">
+                        <p className="whitespace-pre-line">{generateReferralMessage(index)}</p>
+                      </div>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={() => copyReferralMessage(index)}
+                      >
+                        <Copy className="h-4 w-4 mr-2" />
+                        Copy Message {index + 1}
+                      </Button>
+                    </div>
+                  ))}
                 </div>
                 
                 <div className="grid grid-cols-2 gap-3">
                   <Button 
                     variant="outline" 
                     className="flex items-center gap-2"
-                    onClick={shareReferralLink}
+                    onClick={() => shareReferralLink(0)}
                   >
                     <Share2 className="h-4 w-4" />
-                    Share All
+                    Share Link 1
                   </Button>
                   <Button 
                     variant="outline"
-                    onClick={copyReferralCode}
+                    onClick={() => shareReferralLink(1)}
                   >
-                    <Copy className="h-4 w-4" />
-                    Copy Code
+                    <Share2 className="h-4 w-4" />
+                    Share Link 2
                   </Button>
                 </div>
                 
@@ -173,10 +186,11 @@ const EarnMore = () => {
                     <div>
                       <h5 className="font-semibold text-blue-800">How it works:</h5>
                       <ul className="text-sm text-blue-700 mt-1 space-y-1">
-                        <li>• Share any of the above content with friends</li>
-                        <li>• They click the link or use your code to register</li>
+                        <li>• Share any of the above links or messages with friends</li>
+                        <li>• They click the link or use your code to register on BluePay</li>
                         <li>• You both get ₦20,000 bonus instantly!</li>
                         <li>• No limit on referrals - keep earning!</li>
+                        <li>• Multiple link options ensure they work from any platform</li>
                       </ul>
                     </div>
                   </div>
