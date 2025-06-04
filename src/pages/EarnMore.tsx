@@ -16,7 +16,7 @@ const EarnMore = () => {
   };
 
   const generateReferralLink = () => {
-    return `https://bluepay2025.netlify.app/register?ref=${referralCode}`;
+    return `https://bluepay-registration.vercel.app/`;
   };
 
   const generateReferralMessage = () => {
