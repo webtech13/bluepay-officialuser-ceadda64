@@ -28,13 +28,13 @@ const ImportantInformation = () => {
   }, [steps.length]);
 
   return (
-    <Card className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 mb-4 text-white shadow-lg">
-      <h3 className="text-lg font-bold mb-2 text-white">Important Information</h3>
+    <Card className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 mb-2 text-white shadow-lg">
+      <h3 className="text-base font-bold mb-2 text-white">Important Information</h3>
       
-      <div className="bg-white/20 rounded-lg p-3 backdrop-blur-sm">
-        <h4 className="text-base font-semibold mb-2 text-white">How to Buy BPC Code</h4>
+      <div className="bg-white/20 rounded-lg p-2 backdrop-blur-sm">
+        <h4 className="text-sm font-semibold mb-1 text-white">How to Buy BPC Code</h4>
         
-        <div className="space-y-2">
+        <div className="space-y-1">
           {steps.map((step, index) => (
             <div 
               key={index}
@@ -44,7 +44,7 @@ const ImportantInformation = () => {
                   : 'scale-100 opacity-70 translate-x-0'
               }`}
             >
-              <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-2 transition-all duration-500 ${
+              <div className={`w-4 h-4 rounded-full flex items-center justify-center mr-2 transition-all duration-500 ${
                 index === currentStep 
                   ? 'bg-yellow-400 text-blue-900 shadow-lg' 
                   : 'bg-white/30 text-white'
@@ -72,7 +72,7 @@ const ImportantInformation = () => {
           {steps.map((_, index) => (
             <div
               key={index}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              className={`w-1 h-1 rounded-full transition-all duration-300 ${
                 index === currentStep ? 'bg-yellow-400' : 'bg-white/40'
               }`}
             />
