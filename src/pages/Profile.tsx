@@ -1,7 +1,6 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp, Smartphone } from "lucide-react";
+import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp, Smartphone, Download, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
@@ -95,6 +94,14 @@ const Profile = () => {
     }
   };
 
+  const handleDownloadApp = () => {
+    window.open("https://www.upload-apk.com/lW4B836tNBcyJvU", "_blank");
+    toast({
+      title: "Opening download page",
+      description: "Redirecting to app download...",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-bluepay-blue text-white">
       <header className="p-4 flex items-center">
@@ -156,6 +163,26 @@ const Profile = () => {
             <div>
               <p className="text-gray-500 mb-1">Account Level</p>
               <p className="text-lg">Basic</p>
+              <div className="h-px bg-gray-200 my-4"></div>
+            </div>
+            
+            {/* Download App Section */}
+            <div>
+              <div 
+                className="flex items-center justify-between cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                onClick={handleDownloadApp}
+              >
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                    <Download className="h-5 w-5 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">Download App</p>
+                    <p className="text-sm text-gray-500">Get the mobile app for your device</p>
+                  </div>
+                </div>
+                <ChevronRight className="h-5 w-5 text-gray-400" />
+              </div>
               <div className="h-px bg-gray-200 my-4"></div>
             </div>
             
