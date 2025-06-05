@@ -35,7 +35,6 @@ const AirtimePurchase = () => {
       return;
     }
 
-    // Validate phone number
     if (phoneNumber.length !== 11) {
       toast({
         variant: "destructive",
@@ -44,7 +43,6 @@ const AirtimePurchase = () => {
       return;
     }
 
-    // Validate BPC code
     if (bpcCode !== "BPC5271536") {
       toast({
         variant: "destructive",
@@ -55,10 +53,8 @@ const AirtimePurchase = () => {
 
     const amountValue = parseFloat(amount);
     
-    // Update balance in userStore
     updateBalance(-amountValue);
     
-    // Add to transaction history
     addTransaction({
       id: Date.now(),
       type: `${network} Airtime`,
@@ -77,21 +73,21 @@ const AirtimePurchase = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-blue-600 text-white py-4 px-5">
+      <header className="bg-blue-600 text-white py-3 px-4">
         <div className="flex items-center">
-          <button onClick={() => navigate("/dashboard")} className="mr-3">
-            <ArrowLeft size={24} />
+          <button onClick={() => navigate("/dashboard")} className="mr-2">
+            <ArrowLeft size={20} />
           </button>
-          <h1 className="text-2xl font-bold">Buy Airtime</h1>
+          <h1 className="text-xl font-bold">Buy Airtime</h1>
         </div>
       </header>
 
-      <div className="p-5 flex-1">
-        <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="p-4 flex-1">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700 mb-2">Select Network</label>
+            <label className="block text-gray-700 mb-1 text-sm">Select Network</label>
             <Select value={network} onValueChange={setNetwork}>
-              <SelectTrigger className="w-full border-2 border-blue-600 rounded-lg p-4 h-14 text-lg">
+              <SelectTrigger className="w-full border-2 border-blue-600 rounded-lg p-3 h-12 text-base">
                 <SelectValue placeholder="Select Network" />
               </SelectTrigger>
               <SelectContent>
@@ -105,46 +101,46 @@ const AirtimePurchase = () => {
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2">Phone Number</label>
+            <label className="block text-gray-700 mb-1 text-sm">Phone Number</label>
             <Input
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
+              className="w-full border-2 border-blue-600 rounded-lg p-3 text-base"
               placeholder="Enter 11-digit phone number"
               maxLength={11}
             />
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2">Amount</label>
+            <label className="block text-gray-700 mb-1 text-sm">Amount</label>
             <Input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
+              className="w-full border-2 border-blue-600 rounded-lg p-3 text-base"
               placeholder="Enter amount"
             />
           </div>
           
           <div>
-            <label className="block text-gray-700 mb-2">BPC CODE</label>
+            <label className="block text-gray-700 mb-1 text-sm">BPC CODE</label>
             <Input
               type="text"
               value={bpcCode}
               onChange={(e) => setBpcCode(e.target.value)}
-              className="w-full border-2 border-blue-600 rounded-lg p-4 text-lg"
+              className="w-full border-2 border-blue-600 rounded-lg p-3 text-base"
               placeholder="Enter BPC code"
             />
           </div>
           
-          <div className="mt-8">
-            <p className="text-2xl font-bold">Available Balance: ₦{balance.toLocaleString()}</p>
+          <div className="mt-6">
+            <p className="text-lg font-bold">Available Balance: ₦{balance.toLocaleString()}</p>
           </div>
           
           <Button 
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-xl py-6 mt-4"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-base py-4 mt-3"
           >
             Purchase Airtime
           </Button>

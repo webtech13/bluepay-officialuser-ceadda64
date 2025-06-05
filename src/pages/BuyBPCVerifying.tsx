@@ -7,7 +7,6 @@ const BuyBPCVerifying = () => {
   const [countdown, setCountdown] = useState(9);
 
   useEffect(() => {
-    // Countdown timer
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
@@ -24,26 +23,26 @@ const BuyBPCVerifying = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <header className="bg-[#222222] text-white py-4 px-5 flex justify-between items-center sticky top-0 z-10">
-        <button className="text-xl">
+      <header className="bg-[#222222] text-white py-3 px-4 flex justify-between items-center sticky top-0 z-10">
+        <button className="text-lg">
           <span className="sr-only">Menu</span>
         </button>
-        <h1 className="text-2xl font-semibold">BLUEPAY</h1>
-        <div className="w-8 h-8">
+        <h1 className="text-xl font-semibold">BLUEPAY</h1>
+        <div className="w-6 h-6">
           <span className="sr-only">Notifications</span>
         </div>
       </header>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="w-24 h-24 mb-8 relative">
+      <div className="flex-1 flex flex-col items-center justify-center p-4">
+        <div className="w-20 h-20 mb-6 relative">
           <div className="w-full h-full rounded-full border-4 border-gray-200 border-t-blue-600 animate-spin"></div>
-          <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
+          <div className="absolute inset-0 flex items-center justify-center text-xl font-bold">
             {countdown}
           </div>
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 text-center">Verifying your payment</h1>
-        <p className="text-lg text-gray-500 text-center">
+        <h1 className="text-2xl font-bold mb-3 text-center">Verifying your payment</h1>
+        <p className="text-base text-gray-500 text-center">
           Please wait while we confirm your bank transfer...
         </p>
       </div>
