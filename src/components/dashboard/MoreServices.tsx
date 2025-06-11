@@ -1,6 +1,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Headphones, Globe, DollarSign, User } from "lucide-react";
 
 const MoreServices = () => {
   const navigate = useNavigate();
@@ -9,8 +10,7 @@ const MoreServices = () => {
     {
       id: 'support',
       title: 'Support',
-      icon: '/lovable-uploads/daacf416-4ec8-4191-860b-96de0136943e.png',
-      iconType: 'image',
+      icon: Headphones,
       bgColor: 'bg-gray-100',
       iconColor: 'text-gray-600',
       onClick: () => navigate("/support")
@@ -18,8 +18,7 @@ const MoreServices = () => {
     {
       id: 'group',
       title: 'Group',
-      icon: '/lovable-uploads/daacf416-4ec8-4191-860b-96de0136943e.png',
-      iconType: 'image',
+      icon: Globe,
       bgColor: 'bg-blue-100',
       iconColor: 'text-blue-600',
       onClick: () => navigate("/platform")
@@ -27,8 +26,7 @@ const MoreServices = () => {
     {
       id: 'earn',
       title: 'Earn',
-      icon: '/lovable-uploads/daacf416-4ec8-4191-860b-96de0136943e.png',
-      iconType: 'image',
+      icon: DollarSign,
       bgColor: 'bg-yellow-100',
       iconColor: 'text-yellow-600',
       onClick: () => navigate("/earn-more")
@@ -36,8 +34,7 @@ const MoreServices = () => {
     {
       id: 'profile',
       title: 'Profile',
-      icon: '/lovable-uploads/daacf416-4ec8-4191-860b-96de0136943e.png',
-      iconType: 'image',
+      icon: User,
       bgColor: 'bg-gray-100',
       iconColor: 'text-gray-600',
       onClick: () => navigate("/profile")
@@ -49,6 +46,7 @@ const MoreServices = () => {
       <h3 className="font-bold text-base mb-2 text-gray-800">More Services</h3>
       <div className="grid grid-cols-4 gap-2">
         {moreServices.map((service) => {
+          const IconComponent = service.icon;
           return (
             <div 
               key={service.id}
@@ -56,11 +54,7 @@ const MoreServices = () => {
               onClick={service.onClick}
             >
               <div className={`h-10 w-10 ${service.bgColor} rounded-lg mb-1 flex items-center justify-center`}>
-                <img 
-                  src={service.icon} 
-                  alt={service.title}
-                  className="h-6 w-6 object-contain"
-                />
+                <IconComponent className={`h-4 w-4 ${service.iconColor}`} />
               </div>
               <p className="text-xs font-medium text-center text-gray-800">{service.title}</p>
             </div>
