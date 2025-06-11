@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useUserStore } from "./stores/userStore";
+import ChatBot from "./components/ChatBot";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
 import SetupPin from "./pages/SetupPin";
@@ -110,6 +112,7 @@ const App = () => (
           <Route path="/transaction-history" element={<TransactionHistory />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatBot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
