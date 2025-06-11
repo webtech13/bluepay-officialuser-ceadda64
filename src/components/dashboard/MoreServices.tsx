@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Headphones, Globe, DollarSign, User } from "lucide-react";
 
 const MoreServices = () => {
   const navigate = useNavigate();
@@ -60,7 +59,7 @@ const MoreServices = () => {
                 <img 
                   src={service.icon} 
                   alt={service.title}
-                  className="h-4 w-4 object-contain"
+                  className="h-6 w-6 object-contain"
                 />
               </div>
               <p className="text-xs font-medium text-center text-gray-800">{service.title}</p>

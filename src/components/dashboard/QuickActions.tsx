@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CreditCard, Tv, Phone, BarChart3 } from "lucide-react";
 
 const QuickActions = () => {
   const navigate = useNavigate();
@@ -63,7 +62,7 @@ const QuickActions = () => {
                 <img 
                   src={action.icon} 
                   alt={action.title}
-                  className="h-4 w-4 object-contain"
+                  className="h-6 w-6 object-contain"
                 />
               </div>
               <p className="text-xs font-medium text-center text-gray-800">{action.title}</p>
