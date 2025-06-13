@@ -10,6 +10,7 @@ import ChatBot from "./components/ChatBot";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
 import SetupPin from "./pages/SetupPin";
+import Welcome from "./pages/Welcome";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
@@ -92,6 +93,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/register" element={<Register />} />
           <Route path="/setup-pin" element={<SetupPin />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/pin" element={<SetupPin />} />
           <Route path="/profile" element={<Profile />} />
