@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp, Smartphone, Download, ChevronRight } from "lucide-react";
+import { ArrowLeft, User, Upload, Sun, Moon, Circle, CircleHelp, Smartphone, Download, ChevronRight, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useUserStore } from "../stores/userStore";
 import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import ResetBalance from "../components/ResetBalance";
 
 const Profile = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { userData, setUserData, themeMode, setThemeMode } = useUserStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isResetBalanceOpen, setIsResetBalanceOpen] = useState(false);
   
   // Apply theme on component mount and when themeMode changes
   useEffect(() => {
@@ -165,6 +167,25 @@ const Profile = () => {
               <p className="text-sm">Basic</p>
               <div className="h-px bg-gray-200 my-2"></div>
             </div>
+
+            <div>
+              <div 
+                className="flex items-center justify-between cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                onClick={() => setIsResetBalanceOpen(true)}
+              >
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-2">
+                    <RotateCcw className="h-4 w-4 text-red-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900 text-sm">Reset Balance</p>
+                    <p className="text-xs text-gray-500">Reset your account balance</p>
+                  </div>
+                </div>
+                <ChevronRight className="h-4 w-4 text-gray-400" />
+              </div>
+              <div className="h-px bg-gray-200 my-2"></div>
+            </div>
             
             <div>
               <div 
@@ -288,6 +309,8 @@ const Profile = () => {
           Logout
         </Button>
       </div>
+
+      <ResetBalance isOpen={isResetBalanceOpen} onClose={() => setIsResetBalanceOpen(false)} />
     </div>
   );
 };
