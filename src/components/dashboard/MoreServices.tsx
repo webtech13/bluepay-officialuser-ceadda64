@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Headphones, Globe, DollarSign, User } from "lucide-react";
+import { Headphones, Users, Coins, User } from "lucide-react";
 
 const MoreServices = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const MoreServices = () => {
     {
       id: 'group',
       title: 'Group',
-      icon: Globe,
+      icon: Users,
       bgColor: 'bg-blue-100',
       iconColor: 'text-blue-600',
       onClick: () => navigate("/platform")
@@ -26,7 +26,7 @@ const MoreServices = () => {
     {
       id: 'earn',
       title: 'Earn',
-      icon: DollarSign,
+      icon: Coins,
       bgColor: 'bg-yellow-100',
       iconColor: 'text-yellow-600',
       onClick: () => navigate("/earn-more")
@@ -54,7 +54,7 @@ const MoreServices = () => {
               onClick={service.onClick}
             >
               <div className={`h-10 w-10 ${service.bgColor} rounded-lg mb-1 flex items-center justify-center`}>
-                <IconComponent className={`h-4 w-4 ${service.iconColor}`} />
+                <IconComponent className={`h-5 w-5 ${service.iconColor}`} />
               </div>
               <p className="text-xs font-medium text-center text-gray-800">{service.title}</p>
             </div>
