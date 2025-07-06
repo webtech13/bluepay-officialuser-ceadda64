@@ -9,11 +9,11 @@ const Platform = () => {
   const navigate = useNavigate();
   
   const handleJoinTelegram = () => {
-    window.open("https://t.me/officialbluepay2025", "_blank");
+    window.open("https://https://https://t.me/+Q2DpMOHI9TA3OWY0", "_blank");
   };
   
   const handleJoinWhatsapp = () => {
-    window.open("https://chat.whatsapp.com/LUS3IRRaGrR3BueOPCObgb", "_blank");
+    window.open("https://chat.whatsapp.com/DJ0RBbrGNLs0L7EpMl6U60", "_blank");
   };
 
   return (
