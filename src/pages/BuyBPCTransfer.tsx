@@ -7,7 +7,7 @@ import { toast } from "@/hooks/use-toast";
 
 const BuyBPCTransfer = () => {
   const navigate = useNavigate();
-  const email = "sundaychinemerem66@gmail.com";
+  const email = "financial1240@gmail.com";
   
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -68,11 +68,11 @@ const BuyBPCTransfer = () => {
         <div className="mb-4">
           <p className="text-gray-500 text-sm">Amount</p>
           <div className="flex justify-between items-center">
-            <p className="text-2xl font-bold">NGN 6500</p>
+            <p className="text-2xl font-bold">NGN 6,200</p>
             <Button 
               variant="default" 
               className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
-              onClick={() => handleCopy("6500", "Amount")}
+              onClick={() => handleCopy("6,200", "Amount")}
             >
               <Copy size={18} />
               Copy
@@ -83,11 +83,11 @@ const BuyBPCTransfer = () => {
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Account Number</p>
           <div className="flex justify-between items-center">
-            <p className="text-2xl font-bold">6062114681</p>
+            <p className="text-2xl font-bold">8105415222</p>
             <Button 
               variant="default" 
               className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
-              onClick={() => handleCopy("6062114681", "Account Number")}
+              onClick={() => handleCopy("8105415222", "Account Number")}
             >
               <Copy size={18} />
               Copy
@@ -102,7 +102,7 @@ const BuyBPCTransfer = () => {
 
         <div className="mb-4 border-t pt-4">
           <p className="text-gray-500 text-sm">Account Name</p>
-          <p className="text-2xl font-bold">TOLUWANI DAVID JOHNSON</p>
+          <p className="text-2xl font-bold">SAMUEL KALLY</p>
         </div>
       </div>
 
