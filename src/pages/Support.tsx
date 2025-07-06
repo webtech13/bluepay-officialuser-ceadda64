@@ -8,7 +8,7 @@ const Support = () => {
   const navigate = useNavigate();
 
   const handleLiveChatClick = () => {
-    window.open('https://t.me/@SirLexon_4404', '_blank');
+    window.open('t.me/Bluepaywebline', '_blank');
   };
 
   return (
@@ -37,7 +37,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-3 bg-blue-600 hover:bg-blue-700 py-2 text-sm"
-              onClick={() => window.open('mailto: kulalexon@gmail.com')}
+              onClick={() => window.open('mailto: financial1240@gmail.com')}
             >
               Contact via Email
             </Button>
@@ -55,7 +55,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-3 bg-blue-600 hover:bg-blue-700 py-2 text-sm"
-              onClick={() => window.open('https://t.me/@SirLexon_4404')}
+              onClick={() => window.open('https://t.me/Bluepaywebline')}
             >
               Open Telegram
             </Button>
@@ -73,7 +73,7 @@ const Support = () => {
             </div>
             <Button 
               className="w-full mt-3 bg-blue-600 hover:bg-blue-700 py-2 text-sm"
-              onClick={() => window.open('https://wa.me/2348103561349')}
+              onClick={() => window.open('https://wa.me/message/CKFDSQZYCBOZH1')}
             >
               Chat on WhatsApp
             </Button>
